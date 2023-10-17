@@ -16,6 +16,10 @@ import { NgIf, NgFor } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+
+
 
 
 
@@ -40,7 +44,9 @@ import { MatCardModule } from '@angular/material/card';
     NgIf,
     NgFor,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
