@@ -1,0 +1,17 @@
+.felxrow {
+  display: flex;
+  justify-content: center;
+  min-height: 900px;
+  max-height: 1500px;
+  .searchbar-container {
+    position: absolute;
+  }
+  .produkte-container {   //container von den Produkten
+    margin-top: 40px;
+  }
+  .leftsidebar-continer {
+    left: 0;
+    position: absolute;
+    border-top: 2px  solid rgba(79, 250, 0, 0.01) ;
+  }
+}
