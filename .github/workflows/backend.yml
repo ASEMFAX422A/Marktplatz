@@ -19,7 +19,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Setup Maven
-        uses: stcarolas/setup-maven@v4.4
+        uses: stcarolas/setup-maven@v3
         with:
           maven-version: 3.9.2
 
