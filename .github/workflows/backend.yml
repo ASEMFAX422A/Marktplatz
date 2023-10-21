@@ -4,30 +4,29 @@ on:
     branches:
       - main
   workflow_dispatch:
+env:
+  MY_PATH: ${{ env.GITHUB_PATH }}
+
 jobs:
-      build:
-        runs-on: ubuntu-latest
-        env:
-          MY_PATH: ${{ env.GITHUB_PATH }}
-        steps:
-          - name: Checkout
-            uses: actions/checkout@v3
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-          - name: Setup Java
-            uses: actions/setup-java@v3
-            with:
-              java-version: 17
-              distribution: 'adopt'
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'adopt'
 
-          - name: Setup Maven
-            uses: stcarolas/setup-maven@v4.4
-            with:
-              maven-version: 3.9.2
+      - name: Setup Maven
+        uses: stcarolas/setup-maven@v4.4
+        with:
+          maven-version: 3.9.2
 
-          - name: Set Environment
-            run: echo "$MY_PATH" >> $GITHUB_PATH
+      - name: Set Environment
+        run: echo "$MY_PATH" >> $GITHUB_PATH
 
-          - name: Build Application
-            run: mvn clean package
-          - name: Set Environment
-            run: echo "/opt/hostedtoolcache/maven/3.9.2/x64/bin" >> $GITHUB_PATH
+      - name: Build Application
+        run: mvn clean package
