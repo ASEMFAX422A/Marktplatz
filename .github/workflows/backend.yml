@@ -1,20 +1,25 @@
-name: Build and Deploy Spring Boot App
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 17
+    - name: Set up Java
       uses: actions/setup-java@v2
       with:
         java-version: '17'
         distribution: 'adopt'
-        
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Build and test with Maven
+      run: mvn clean install
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./target
