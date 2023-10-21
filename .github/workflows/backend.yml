@@ -9,9 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-  run-unit-tests:
-    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -27,14 +24,5 @@ jobs:
         with:
           maven-version: 3.9.2
 
-      - name: Unit Tests
+      - name: Build Application
         run: mvn clean package
-
-      - name: Rename the artifact
-        run: cp target/backend-social-network-1.0-SNAPSHOT.jar backend-social-network-${{github.sha}}.jar
-
-      - name: Save the artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: backend-social-network
-          path: backend-social-network-${{github.sha}}.jar
