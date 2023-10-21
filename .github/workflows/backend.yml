@@ -1,11 +1,10 @@
 name: Deploy
-jobs:
 on:
   push:
     branches:
       - main
   workflow_dispatch:
-    jobs:
+jobs:
       build:
         runs-on: ubuntu-latest
         env:
