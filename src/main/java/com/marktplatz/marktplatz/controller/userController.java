@@ -1,28 +1,42 @@
 package com.marktplatz.marktplatz.controller;
 
 import com.marktplatz.marktplatz.entity.User;
+import com.marktplatz.marktplatz.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
+@RestController
+@CrossOrigin
 @Controller
+@RequestMapping(value = "/user", method = RequestMethod.POST)
 public class userController <T> {
 
     @Autowired
-    com.marktplatz.marktplatz.services.userService userService;
+    UserService userService;
 
-
-    @GetMapping("/alluser")
-    public ResponseEntity<List<User>> getAllUser(){
-        return new ResponseEntity<>(userService.getAllUser().getBody(), HttpStatus.OK);
+    @GetMapping("/getAll")
+    public ResponseEntity<T> getAllUser(){
+        return  ResponseEntity.ok((T) userService.getAllUser().getBody());
     }
-    @GetMapping("/user/{id}")
+    @GetMapping("/getUser/{id}")
     public ResponseEntity<T> getUserById(@PathVariable Long id){
-        return new ResponseEntity<T>((T) userService.getUser(id),HttpStatus.OK);
+        return ResponseEntity.ok((T) userService.getUser(id));
+    }
+    @PostMapping("/addUser")
+    public ResponseEntity<T> addUser(@RequestBody User user){
+
+        return ResponseEntity.ok((T)userService.addUser(user));
+
+    }
+    @PutMapping("/updateUser")
+    public void updateUser(@RequestBody User user){
+        userService.updateUserById(user);
+    }
+    @DeleteMapping("/deleteUser")
+    public void deleteUser(@RequestBody User user){
+        userService.deleteUser(user);
     }
 }

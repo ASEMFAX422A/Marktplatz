@@ -6,13 +6,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.marktplatz.marktplatz.repository.UserReop;
+
+import javax.swing.text.html.parser.Entity;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Service
-public class userService {
+public class UserService<T> {
     @Autowired
     UserReop userReop;
+
 
     public ResponseEntity<List<User>> getAllUser(){
         return new ResponseEntity<>(userReop.findAll(), HttpStatus.OK);
@@ -28,11 +32,14 @@ public class userService {
         }
     }
 
-    public ResponseEntity<User> addUser(User user){
-        return new ResponseEntity<>(userReop.save(user),HttpStatus.OK);
+    public ResponseEntity<T> addUser(User user){
+        if (user.getName()==null) {
+            return null;
+        }
+        return ResponseEntity.ok((T) userReop.save(user));
     }
 
-    public  Optional<User> updateUserById(User user, Long id){
-        return userReop.updateUserById(id, user.getName(), user.getEmail(),user.getPassword());
-    }
+    public void updateUserById(User user){
+       userReop.updateUserById(user.getId(), user.getName(), user.getEmail(),user.getPassword());}
+    public void deleteUser(User user){userReop.delete(user);}
 }
