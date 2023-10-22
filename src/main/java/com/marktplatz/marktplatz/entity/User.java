@@ -6,13 +6,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 
-    @AllArgsConstructor
+
+@AllArgsConstructor
     @NoArgsConstructor
     @Getter
     @Setter
     @Entity
-    @Table(name = "User")
+    @Table(name = "\"User\"")
     public class User {
         @Id
         @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -26,5 +28,8 @@ import lombok.Setter;
 
         @Column
         private String password;
+
+        @OneToMany(mappedBy = "user")
+        private List<UserAnzeige> anzeigen;
 
     }

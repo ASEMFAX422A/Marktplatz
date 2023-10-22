@@ -23,6 +23,9 @@ public class Anzeige {
     @Column
     private double preis;
 
+    @OneToOne(mappedBy = "anzeige")
+    private UserAnzeige userAnzeige;
+
 
 
 }
