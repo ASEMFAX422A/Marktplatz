@@ -30,9 +30,9 @@ public class AnzeigeController<T> {
     public void updateAnzeige(@RequestBody Anzeige anzeige){
         anzeigeService.updateAnzeigeById(anzeige);
     }
-    @DeleteMapping("/deleteAnzeige")
-    public void deleteAnzeige(@RequestBody Anzeige anzeige){
-        anzeigeService.deleteAnzeige(anzeige);
+    @DeleteMapping("/deleteAnzeige/{id}")
+    public void deleteAnzeige(@PathVariable Long id){
+        anzeigeService.deleteAnzeige(id);
     }
 
 }

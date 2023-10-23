@@ -17,7 +17,7 @@ public interface AnzeigeRepo<T> extends JpaRepository<Anzeige,Long> {
     void updateAnzeigeById(@Param("id") Long id, @Param("description") String description, @Param("name") String name, @Param("image") String image, @Param("preis") double preis);
 
 
-    @Modifying
+
     @Query("SELECT a FROM Anzeige a where a.name = :name")
     Anzeige findeByName(@Param("name") String name);
 

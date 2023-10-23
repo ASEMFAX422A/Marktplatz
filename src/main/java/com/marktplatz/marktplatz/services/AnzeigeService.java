@@ -46,5 +46,5 @@ public class AnzeigeService<T> {
     public void updateAnzeigeById(Anzeige anzeige){
         anzeigeRepo.updateAnzeigeById(anzeige.getId(),anzeige.getDescription(),
                 anzeige.getName(),anzeige.getImage(),anzeige.getPreis());}
-    public void deleteAnzeige(Anzeige anzeige){anzeigeRepo.delete(anzeige);}
+    public void deleteAnzeige(Long id){anzeigeRepo.deleteById(id);}
 }
