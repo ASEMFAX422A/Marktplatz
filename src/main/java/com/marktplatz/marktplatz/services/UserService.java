@@ -48,5 +48,5 @@ public class UserService<T> {
 
     public void updateUserById(User user){
        userReop.updateUserById(user.getId(), user.getName(), user.getEmail(),user.getPassword());}
-    public void deleteUser(User user){userReop.delete(user);}
+    public void deleteUser(Long id){userReop.deleteById(id);}
 }
