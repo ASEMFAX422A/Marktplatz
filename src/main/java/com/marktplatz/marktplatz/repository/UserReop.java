@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 
 
 @Transactional
-
 public interface UserReop<T> extends JpaRepository<User,Long> {
     @Modifying
     @Query("UPDATE User u SET u.name = :name, u.email = :email, u.password= :password  WHERE u.id = :id")
