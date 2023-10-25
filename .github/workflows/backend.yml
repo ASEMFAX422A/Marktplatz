@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - backend
 jobs:
   build-deploy:
     name: Build und Deploy spring boot
