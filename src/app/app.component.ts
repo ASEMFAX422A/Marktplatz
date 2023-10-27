@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  username = ['Oliver','Zaid','Besmir ']
+  postProduct = ['Fernseher', 'Fernseher', 'Fernseher']
+  postPrice = ['300€', '290€', '320€']
+
   title = 'EbayTest';
 }

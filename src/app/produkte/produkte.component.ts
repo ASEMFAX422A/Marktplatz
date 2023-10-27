@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
 @Component({
@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
 })
 
 export class ProdukteComponent {
+  @Input() user:string ='';
+  @Input() product:string ='';
+  @Input() price:string ='';
 
 }
