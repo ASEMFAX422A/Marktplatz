@@ -1,0 +1,16 @@
+.loginDialog{
+  width: 700px;
+  .header {
+    margin-top: 5px;
+    text-align: center;
+    align-items: center;
+    h1 {
+      font-size: 25px;
+    }
+  }
+  .contact {
+    mat-form-field {
+      width: 300px;
+    }
+  }
+}

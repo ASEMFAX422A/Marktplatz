@@ -18,6 +18,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatDialogModule} from '@angular/material/dialog';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 
 
 
@@ -32,7 +34,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     ProdukteComponent,
     SearchbarComponent,
     LeftsidebarComponent,
-    FooterComponent
+    FooterComponent,
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatButtonModule,
     MatCardModule,
     MatInputModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
