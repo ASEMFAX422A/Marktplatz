@@ -1,4 +1,6 @@
 <header>
   <img class="logo" src="assets/img/Logo.png">
-    <a class="login" (click)="openDialogLogin()" >Login</a><a class="register" (click)="openDialogRegister()">Register</a>
+  <div *ngIf=""><a>Anmeldung</a></div>
+  <a class="login">Login</a><a class="register">Register</a>
+
 </header>
