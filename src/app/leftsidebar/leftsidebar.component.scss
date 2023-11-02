@@ -1,10 +1,13 @@
-.rightsidebar {
-  min-height: 900px;
+.leftsidebar {
+  min-height: 700px;
   max-height: 1500px;
   left: 0;
   mat-drawer {
     width: 200px;
+    text-align: center;
+    align-items: center;
   }
+
 }
 
 

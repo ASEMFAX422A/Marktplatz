@@ -16,6 +16,14 @@ import { NgIf, NgFor } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import {MatDialogModule} from '@angular/material/dialog';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
+
+
+
 
 
 
@@ -28,7 +36,9 @@ import { MatCardModule } from '@angular/material/card';
     ProdukteComponent,
     SearchbarComponent,
     LeftsidebarComponent,
-    FooterComponent
+    FooterComponent,
+    LoginDialogComponent,
+    RegisterDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +50,10 @@ import { MatCardModule } from '@angular/material/card';
     NgIf,
     NgFor,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    MatGridListModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

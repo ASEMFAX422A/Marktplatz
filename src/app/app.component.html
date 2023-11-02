@@ -5,7 +5,7 @@
     <app-searchbar></app-searchbar>
   </div>
   <div class="produkte-container">
-    <app-produkte></app-produkte>
+    <app-produkte *ngFor="let i of [0, 1, 2]" [user]="username[i]" [product]="postProduct[i]" [price]="postPrice[i]"></app-produkte>
   </div>
   <div class="leftsidebar-continer">
     <app-leftsidebar></app-leftsidebar>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ProductService } from '../product.service';
 
 
 @Component({
@@ -8,5 +9,8 @@ import { Component } from '@angular/core';
 })
 
 export class ProdukteComponent {
-
+  @Input() user:string ='';
+  @Input() product:string ='';
+  @Input() price:string ='';
+  constructor(public pd: ProductService) {}
 }

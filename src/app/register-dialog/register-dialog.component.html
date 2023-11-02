@@ -1,0 +1,37 @@
+<div class="registerDialog">
+  <div class="header">
+    <h1>Register</h1>
+  </div>
+  <div class="contact">
+    <p><mat-form-field>
+      <input matInput placeholder="Full name">
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field></p>
+    <p><mat-form-field>
+      <input matInput placeholder="Username">
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field></p>
+    <p><mat-form-field>
+      <input matInput placeholder="Email">
+      <mat-icon matSuffix>drafts</mat-icon>
+    </mat-form-field></p>
+    <p><mat-form-field>
+      <input type="{{ isPasswordVisiblePassword ? 'text' : 'password' }}" matInput placeholder="Password">
+      <mat-icon (click)="togglePasswordVisibilityPassword()" matSuffix>
+        <a *ngIf="isPasswordVisiblePassword">lock_open</a>
+        <a *ngIf="!isPasswordVisiblePassword">lock</a>
+      </mat-icon>
+    </mat-form-field></p>
+    <p><mat-form-field>
+      <input type="{{ isPasswordVisiblePasswordcnfm ? 'text' : 'password' }}" matInput placeholder="Confrim Password">
+      <mat-icon (click)="togglePasswordVisibilityPasswordCnfm()" matSuffix>
+        <a *ngIf="isPasswordVisiblePasswordcnfm">lock_open</a>
+        <a *ngIf="!isPasswordVisiblePasswordcnfm">lock</a>
+      </mat-icon>
+    </mat-form-field></p>
+  </div>
+  <div class="buttons">
+    <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>
+    <button class="submit" mat-raised-button color="warn">Submit</button>
+  </div>
+</div>
