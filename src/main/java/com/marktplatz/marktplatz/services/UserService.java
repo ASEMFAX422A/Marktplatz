@@ -1,52 +1,48 @@
 package com.marktplatz.marktplatz.services;
 
+import com.marktplatz.marktplatz.DTOs.UserDto;
 import com.marktplatz.marktplatz.entity.User;
 import com.marktplatz.marktplatz.repository.UserReop;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService<T> {
     @Autowired
-    UserReop userReop;
+    private UserReop userReop;
 
 
-    public ResponseEntity<List<T>> getAllUser(){
-        return new ResponseEntity<>(userReop.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<UserDto>> getAllUser(){
+        return ResponseEntity.ok(new UserDto().AllUsertoDto(userReop.findAll()));
     }
-
     public ResponseEntity<T> getUserById(Long id){
-        Optional<User> userOptional = userReop.findById(id);
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            return ResponseEntity.ok((T) user);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return (ResponseEntity<T>) ResponseEntity.ok((new UserDto().OpnaluserDto(userReop.findById(id))));
     }
-
     public ResponseEntity<T> getByUsername(String username){
-        if (username == null) {
-            return null;
+        if (username.isEmpty()) {
+            return (ResponseEntity<T>) ResponseEntity.badRequest();
         }
-        return ResponseEntity.ok((T) userReop.findeByUsername(username));
+        return ResponseEntity.ok((T)new UserDto().userDto(userReop.findeByUsername(username)));
     }
 
-
-
-    public ResponseEntity<T> addUser(User user){
-        if (user.getName()==null) {
-            return null;
-        }
-        return ResponseEntity.ok((T) userReop.save(user));
+    //TODO: muss Noch angepasst werden. soll geprüft werden ob der User bzw. Username schon existiert.✅
+    public ResponseEntity<T> addUser(UserDto user){
+        if (userReop.findeByUsername(user.getUsername())!=null) {return (ResponseEntity<T>) ResponseEntity.badRequest();}
+        return (ResponseEntity<T>) ResponseEntity.ok(new UserDto().userDto(userReop.save(new User().toUser(user))));
     }
 
-    public void updateUserById(User user){
-       userReop.updateUserById(user.getId(), user.getName(), user.getEmail(),user.getPassword());}
+    public void updateUserById(UserDto user) {
+        userReop.updateUserById(
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getPassword(),
+                user.getUsername(),
+                user.getProfilePic()
+        );
+    }
     public void deleteUser(Long id){userReop.deleteById(id);}
 }
