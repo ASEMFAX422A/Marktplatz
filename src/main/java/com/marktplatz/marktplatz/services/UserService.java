@@ -19,7 +19,7 @@ public class UserService<T> {
         return ResponseEntity.ok(new UserDto().AllUsertoDto(userReop.findAll()));
     }
     public ResponseEntity<T> getUserById(Long id){
-        return (ResponseEntity<T>) ResponseEntity.ok((new UserDto().OpnaluserDto(userReop.findById(id))));
+        return (ResponseEntity<T>) ResponseEntity.ok(new UserDto().OpntionaluserDto(userReop.findById(id)));
     }
     public ResponseEntity<T> getByUsername(String username){
         if (username.isEmpty()) {
@@ -30,7 +30,7 @@ public class UserService<T> {
 
     //TODO: muss Noch angepasst werden. soll geprüft werden ob der User bzw. Username schon existiert.✅
     public ResponseEntity<T> addUser(UserDto user){
-        if (userReop.findeByUsername(user.getUsername())!=null) {return (ResponseEntity<T>) ResponseEntity.badRequest();}
+        if (user.getUsername().isEmpty()&&new UserDto().userDto(userReop.findeByUsername(user.getUsername()))!=null) {return (ResponseEntity<T>) ResponseEntity.badRequest();}
         return (ResponseEntity<T>) ResponseEntity.ok(new UserDto().userDto(userReop.save(new User().toUser(user))));
     }
 
@@ -41,8 +41,6 @@ public class UserService<T> {
                 user.getEmail(),
                 user.getPassword(),
                 user.getUsername(),
-                user.getProfilePic()
-        );
-    }
+                user.getProfilePic());}
     public void deleteUser(Long id){userReop.deleteById(id);}
 }

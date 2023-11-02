@@ -1,10 +1,9 @@
 package com.marktplatz.marktplatz.entity;
 
+import com.marktplatz.marktplatz.DTOs.AnzeigeDto;
+import com.marktplatz.marktplatz.DTOs.UserDto;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
 @NoArgsConstructor
@@ -13,9 +12,10 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table
+@Builder
 public class Anzeige {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     @Column
     private String name;
@@ -29,6 +29,15 @@ public class Anzeige {
     @OneToOne(mappedBy = "anzeige")
     private UserAnzeige userAnzeige;
 
-
+    public Anzeige toAnzeige(AnzeigeDto anzeigeDto){
+        return Anzeige.builder()
+                .id(anzeigeDto.getId())
+                .name(anzeigeDto.getName())
+                .description(anzeigeDto.getDescription())
+                .image(anzeigeDto.getImage())
+                .preis(anzeigeDto.getPreis())
+                .userAnzeige(anzeigeDto.getUserAnzeige())
+                .build();
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.marktplatz.marktplatz.controller;
 
+import com.marktplatz.marktplatz.DTOs.AnzeigeDto;
 import com.marktplatz.marktplatz.entity.Anzeige;
 import com.marktplatz.marktplatz.services.AnzeigeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class AnzeigeController<T> {
     @PostMapping("/addAnzeige")
     public ResponseEntity<T> addAnzeige(@RequestBody Anzeige anzeige){return ResponseEntity.ok((T)anzeigeService.addAnzeige(anzeige).getBody());}
     @PutMapping("/updateAnzeige")
-    public void updateAnzeige(@RequestBody Anzeige anzeige){
+    public void updateAnzeige(@RequestBody AnzeigeDto anzeige){
         anzeigeService.updateAnzeigeById(anzeige);
     }
     @DeleteMapping("/deleteAnzeige/{id}")

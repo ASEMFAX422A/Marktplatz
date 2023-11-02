@@ -35,7 +35,7 @@ public class UserDto {
                 .build();
 
     }
-    public UserDto OpnaluserDto(Optional<User> user){
+    public UserDto OpntionaluserDto(Optional<User> user){
         return userDto(user.get());
 
     }
