@@ -10,28 +10,28 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService<T> {
+public class UserService {
     @Autowired
     private UserReop userReop;
 
 
-    public ResponseEntity<List<UserDto>> getAllUser(){
-        return ResponseEntity.ok(new UserDto().AllUsertoDto(userReop.findAll()));
+    public List<User> getAllUser(){
+        return userReop.findAll();
     }
-    public ResponseEntity<T> getUserById(Long id){
-        return (ResponseEntity<T>) ResponseEntity.ok(new UserDto().OpntionaluserDto(userReop.findById(id)));
+    public ResponseEntity<UserDto> getUserById(Long id){
+        return  ResponseEntity.ok(new UserDto().OpntionaluserDto(userReop.findById(id)));
     }
-    public ResponseEntity<T> getByUsername(String username){
+    public ResponseEntity<UserDto> getByUsername(String username){
         if (username.isEmpty()) {
-            return (ResponseEntity<T>) ResponseEntity.badRequest();
+            return (ResponseEntity<UserDto>) ResponseEntity.badRequest();
         }
-        return ResponseEntity.ok((T)new UserDto().userDto(userReop.findeByUsername(username)));
+        return ResponseEntity.ok(new UserDto().userDto(userReop.findeByUsername(username)));
     }
 
     //TODO: muss Noch angepasst werden. soll geprüft werden ob der User bzw. Username schon existiert.✅
-    public ResponseEntity<T> addUser(UserDto user){
-        if (user.getUsername().isEmpty()&&new UserDto().userDto(userReop.findeByUsername(user.getUsername()))!=null) {return (ResponseEntity<T>) ResponseEntity.badRequest();}
-        return (ResponseEntity<T>) ResponseEntity.ok(new UserDto().userDto(userReop.save(new User().toUser(user))));
+    public ResponseEntity<UserDto> addUser(UserDto user){
+        if (new UserDto().userDto(userReop.findeByUsername(user.getUsername()))!=null) {return (ResponseEntity<UserDto>) ResponseEntity.badRequest();}
+        return ResponseEntity.ok(new UserDto().userDto(userReop.save(new User().toUser(user))));
     }
 
     public void updateUserById(UserDto user) {

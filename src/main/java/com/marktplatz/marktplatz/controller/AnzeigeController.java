@@ -17,16 +17,16 @@ public class AnzeigeController<T> {
     AnzeigeService anzeigeService;
 
     @GetMapping("/getAll")
-    public ResponseEntity<T> getAnzeigen(){return  ResponseEntity.ok((T) anzeigeService.getAnzeigen().getBody());}
+    public ResponseEntity<AnzeigeDto> getAnzeigen(){return  ResponseEntity.ok((AnzeigeDto) anzeigeService.getAnzeigen().getBody());}
 
     @GetMapping("/getAll/{uId}")// Noch nicht fertig
-    public ResponseEntity<T> getAnzeigen(@PathVariable Long uId){return  ResponseEntity.ok((T) anzeigeService.getAnzeigenByUserId(uId).getBody());}
+    public ResponseEntity<AnzeigeDto> getAnzeigen(@PathVariable Long uId){return  ResponseEntity.ok((AnzeigeDto) anzeigeService.getAnzeigenByUserId(uId).getBody());}
     @GetMapping("/getAnzeige/{id}")
-    public ResponseEntity<T> getAnzeigenById(@PathVariable Long id){return ResponseEntity.ok((T) anzeigeService.getAnzeigenById(id).getBody());}
+    public ResponseEntity<AnzeigeDto> getAnzeigenById(@PathVariable Long id){return ResponseEntity.ok((AnzeigeDto) anzeigeService.getAnzeigenById(id).getBody());}
     @GetMapping("/getAnzeigeByName/{name}")
-    public ResponseEntity<T> getAnzeigeByName(@PathVariable String name){return ResponseEntity.ok((T)anzeigeService.getAnzeigeByName(name).getBody());}
+    public ResponseEntity<AnzeigeDto> getAnzeigeByName(@PathVariable String name){return ResponseEntity.ok((AnzeigeDto)anzeigeService.getAnzeigeByName(name).getBody());}
     @PostMapping("/addAnzeige")
-    public ResponseEntity<T> addAnzeige(@RequestBody Anzeige anzeige){return ResponseEntity.ok((T)anzeigeService.addAnzeige(anzeige).getBody());}
+    public ResponseEntity<AnzeigeDto> addAnzeige(@RequestBody Anzeige anzeige){return ResponseEntity.ok((AnzeigeDto) anzeigeService.addAnzeige(anzeige).getBody());}
     @PutMapping("/updateAnzeige")
     public void updateAnzeige(@RequestBody AnzeigeDto anzeige){
         anzeigeService.updateAnzeigeById(anzeige);

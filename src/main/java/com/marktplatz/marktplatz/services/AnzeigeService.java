@@ -21,26 +21,26 @@ public class AnzeigeService<T> {
         return ResponseEntity.ok(new AnzeigeDto().AllAnzeigentoDto(anzeigeRepo.findAll()));
     }
     //Noch nicht fertig
-    public ResponseEntity<List<T>> getAnzeigenByUserId(Long uId){
+    public ResponseEntity<List<AnzeigeDto>> getAnzeigenByUserId(Long uId){
         return ResponseEntity.ok(new AnzeigeDto().AllAnzeigentoDto(anzeigeRepo.findAllAnzeigen(uId)));
     }
-    public ResponseEntity<T> getAnzeigenById(Long id){
-        Optional<T> AnzeigeOptional = anzeigeRepo.findById(id);
+    public ResponseEntity<AnzeigeDto> getAnzeigenById(Long id){
+        Optional<AnzeigeDto> AnzeigeOptional = anzeigeRepo.findById(id);
         if (AnzeigeOptional.isPresent()) {
-            return (ResponseEntity<T>) ResponseEntity.ok(new AnzeigeDto().OpntionalAnzeigeDto(anzeigeRepo.findById(id)));
+            return ResponseEntity.ok(new AnzeigeDto().OpntionalAnzeigeDto(anzeigeRepo.findById(id)));
         } else {
             return ResponseEntity.notFound().build();
         }
     }
-    public ResponseEntity<T> getAnzeigeByName(String username){
+    public ResponseEntity<AnzeigeDto> getAnzeigeByName(String username){
         if (username.isEmpty()) {return null;}
-        return ResponseEntity.ok((T) new AnzeigeDto().anzeigeDto(anzeigeRepo.findeByName(username)));
+        return ResponseEntity.ok(new AnzeigeDto().anzeigeDto(anzeigeRepo.findeByName(username)));
     }
-    public ResponseEntity<T> addAnzeige(Anzeige anzeige){
+    public ResponseEntity<AnzeigeDto> addAnzeige(Anzeige anzeige){
         if (anzeige.getName().isEmpty()&&new AnzeigeDto().anzeigeDto(anzeigeRepo.findeByName(anzeige.getName()))!=null) {
-            return (ResponseEntity<T>) ResponseEntity.badRequest();
+            return (ResponseEntity<AnzeigeDto>) ResponseEntity.badRequest();
         }
-        return (ResponseEntity<T>) ResponseEntity.ok(new AnzeigeDto().anzeigeDto((Anzeige) anzeigeRepo.save(anzeige)));
+        return ResponseEntity.ok(new AnzeigeDto().anzeigeDto((Anzeige) anzeigeRepo.save(anzeige)));
     }
     public void updateAnzeigeById(AnzeigeDto anzeige){
         anzeigeRepo.updateAnzeigeById(

@@ -2,6 +2,7 @@ package com.marktplatz.marktplatz.DTOs;
 
 import com.marktplatz.marktplatz.entity.User;
 import com.marktplatz.marktplatz.entity.UserAnzeige;
+import jakarta.annotation.Nullable;
 import lombok.*;
 
 import java.util.List;
@@ -23,7 +24,10 @@ public class UserDto {
     private String profilePic;
     private List<UserAnzeige> anzeigen;
 
-    public UserDto userDto(User user){
+    public UserDto userDto( User user){
+        if (user == null) {
+            return null;
+        }
         return UserDto.builder()
                 .id(user.getId())
                 .name(user.getName())
@@ -35,6 +39,7 @@ public class UserDto {
                 .build();
 
     }
+
     public UserDto OpntionaluserDto(Optional<User> user){
         return userDto(user.get());
 

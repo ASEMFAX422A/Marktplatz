@@ -6,21 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @Controller
 @RequestMapping(value = "/user", method = RequestMethod.POST)
-public class userController <T> {
+public class userController{
     @Autowired
     UserService userService;
+
     @GetMapping("/getAll")
-    public ResponseEntity<T> getAllUser(){return  ResponseEntity.ok((T) userService.getAllUser());}
+    public ResponseEntity<List<UserDto>> getAllUser(){return ResponseEntity.ok((List<UserDto>) new UserDto().AllUsertoDto(userService.getAllUser()));}
     @GetMapping("/getUser/{id}")
-    public ResponseEntity<T> getUserById(@PathVariable Long id){return ResponseEntity.ok((T) userService.getUserById(id).getBody());}
-    @GetMapping("/getUseByUsername/{username}")
-    public ResponseEntity<T> getUserByUsername(@PathVariable String username){return ResponseEntity.ok((T)userService.getByUsername(username).getBody());}
+    public ResponseEntity<UserDto> getUserById(@PathVariable Long id){return ResponseEntity.ok((UserDto) userService.getUserById(id).getBody());}
+    @GetMapping("/getUserByUsername/{username}")
+    public ResponseEntity<UserDto> getUserByUsername(@PathVariable String username){return ResponseEntity.ok((UserDto)userService.getByUsername(username).getBody());}
     @PostMapping("/addUser")
-    public ResponseEntity<T> addUser(@RequestBody UserDto user){return ResponseEntity.ok((T)userService.addUser(user));}
+    public ResponseEntity<UserDto> addUser(@RequestBody UserDto user){return ResponseEntity.ok(((ResponseEntity<UserDto>) userService.addUser(user)).getBody());}
     @PutMapping("/updateUser")
     public void updateUser(@RequestBody UserDto user){
         userService.updateUserById(user);
