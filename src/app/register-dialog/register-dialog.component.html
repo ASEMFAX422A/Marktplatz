@@ -3,32 +3,49 @@
     <h1>Register</h1>
   </div>
   <div class="contact">
+    <form [formGroup]="registerForm">
     <p><mat-form-field>
-      <input matInput placeholder="Full name">
+      <input matInput placeholder="Full name" formControlName="fullName">
       <mat-icon matSuffix>person</mat-icon>
+      <mat-error *ngIf="registerForm.get('fullName')?.hasError('required')">
+        Full name is required
+      </mat-error>
     </mat-form-field></p>
     <p><mat-form-field>
-      <input matInput placeholder="Username">
+      <input matInput placeholder="Username" formControlName="username">
       <mat-icon matSuffix>person</mat-icon>
+      <mat-error *ngIf="registerForm.get('username')?.hasError('required')">
+        Username is required
+      </mat-error>
     </mat-form-field></p>
     <p><mat-form-field>
-      <input matInput placeholder="Email">
+      <input matInput placeholder="Email" formControlName="email">
       <mat-icon matSuffix>drafts</mat-icon>
+      <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+        Email is required
+      </mat-error>
     </mat-form-field></p>
     <p><mat-form-field>
-      <input type="{{ isPasswordVisiblePassword ? 'text' : 'password' }}" matInput placeholder="Password">
+      <input type="{{ isPasswordVisiblePassword ? 'text' : 'password' }}" matInput placeholder="Password" formControlName="password">
       <mat-icon (click)="togglePasswordVisibilityPassword()" matSuffix>
         <a *ngIf="isPasswordVisiblePassword">lock_open</a>
         <a *ngIf="!isPasswordVisiblePassword">lock</a>
       </mat-icon>
+      <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+        Full name is required
+      </mat-error>
     </mat-form-field></p>
     <p><mat-form-field>
-      <input type="{{ isPasswordVisiblePasswordcnfm ? 'text' : 'password' }}" matInput placeholder="Confrim Password">
+      <input type="{{ isPasswordVisiblePasswordcnfm ? 'text' : 'password' }}" matInput placeholder="Confrim Password" formControlName="confirmPassword">
       <mat-icon (click)="togglePasswordVisibilityPasswordCnfm()" matSuffix>
         <a *ngIf="isPasswordVisiblePasswordcnfm">lock_open</a>
         <a *ngIf="!isPasswordVisiblePasswordcnfm">lock</a>
       </mat-icon>
+      <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('required')">
+        Confrim Password is required
+      </mat-error>
     </mat-form-field></p>
+  </form>
   </div>
   <div class="buttons">
     <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>

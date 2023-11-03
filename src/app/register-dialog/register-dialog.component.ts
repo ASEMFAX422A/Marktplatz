@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,7 +12,23 @@ export class RegisterDialogComponent {
   password: string = '';
   isPasswordVisiblePassword: boolean = false;
   isPasswordVisiblePasswordcnfm: boolean = false;
+  isSubmitCheckTrue: boolean = false;
+  isAllrequired: boolean = false;
+  registerForm: FormGroup;
 
+
+  constructor(private matDialog:MatDialog, private formBuilder: FormBuilder) {
+    this.registerForm = this.formBuilder.group({
+      fullName: ['', Validators.required],
+      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+    });
+  }
+  closeDialog(){
+    this.matDialog.closeAll()
+  }
 
   togglePasswordVisibilityPassword(): void {
     this.isPasswordVisiblePassword = !this.isPasswordVisiblePassword;
@@ -20,8 +37,9 @@ export class RegisterDialogComponent {
     this.isPasswordVisiblePasswordcnfm = !this.isPasswordVisiblePasswordcnfm;
   }
 
-  constructor(private matDialog:MatDialog) {}
-  closeDialog(){
-    this.matDialog.closeAll()
+  submitcheck():void {
+    this.isAllrequired = true;
   }
+
+
 }
