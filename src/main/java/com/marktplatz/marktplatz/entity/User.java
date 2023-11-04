@@ -29,7 +29,7 @@ public class User implements UserDetails {
     //TODO: heir muss angepasst werden,sodass die Rolen in der Datenbank richtig gespeichert werden
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "role")
+    @Column(name ="role" ,columnDefinition = "VARCHAR(255) DEFAULT 'USER'")
     private Role role;
 
     @Column
@@ -52,7 +52,7 @@ public class User implements UserDetails {
                     .id(userDto.getId())
                     .name(userDto.getName())
                     .username(userDto.getUsername())
-                    .role(role)
+                    .role(userDto.getRole())
                     .email(userDto.getEmail())
                     .password(userDto.getPassword())
                     .profilePic(userDto.getProfilePic())

@@ -1,6 +1,7 @@
 package com.marktplatz.marktplatz.services;
 
 import com.marktplatz.marktplatz.DTOs.UserDto;
+import com.marktplatz.marktplatz.Roles.Role;
 import com.marktplatz.marktplatz.entity.User;
 import com.marktplatz.marktplatz.repository.UserReop;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ public class UserService {
     //TODO: muss Noch angepasst werden. soll geprüft werden ob der User bzw. Username schon existiert.✅
     public ResponseEntity<UserDto> addUser(UserDto user){
         if (new UserDto().userDto(userReop.findeByUsername(user.getUsername()))!=null) {return (ResponseEntity<UserDto>) ResponseEntity.badRequest();}
+        if (user.getRole()== null){user.setRole(Role.USER);}
         return ResponseEntity.ok(new UserDto().userDto(userReop.save(new User().toUser(user))));
     }
 
