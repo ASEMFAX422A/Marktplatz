@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @Controller
 @RequestMapping(value = "/anzeige", method = RequestMethod.POST)
-public class AnzeigeController<T> {
+public class AnzeigeController {
     @Autowired
     AnzeigeService anzeigeService;
 
@@ -22,11 +22,11 @@ public class AnzeigeController<T> {
     @GetMapping("/getAll/{uId}")// Noch nicht fertig
     public ResponseEntity<AnzeigeDto> getAnzeigen(@PathVariable Long uId){return  ResponseEntity.ok((AnzeigeDto) anzeigeService.getAnzeigenByUserId(uId).getBody());}
     @GetMapping("/getAnzeige/{id}")
-    public ResponseEntity<AnzeigeDto> getAnzeigenById(@PathVariable Long id){return ResponseEntity.ok((AnzeigeDto) anzeigeService.getAnzeigenById(id).getBody());}
+    public ResponseEntity<AnzeigeDto> getAnzeigenById(@PathVariable Long id){return ResponseEntity.ok( anzeigeService.getAnzeigenById(id).getBody());}
     @GetMapping("/getAnzeigeByName/{name}")
-    public ResponseEntity<AnzeigeDto> getAnzeigeByName(@PathVariable String name){return ResponseEntity.ok((AnzeigeDto)anzeigeService.getAnzeigeByName(name).getBody());}
+    public ResponseEntity<AnzeigeDto> getAnzeigeByName(@PathVariable String name){return ResponseEntity.ok(anzeigeService.getAnzeigeByName(name).getBody());}
     @PostMapping("/addAnzeige")
-    public ResponseEntity<AnzeigeDto> addAnzeige(@RequestBody Anzeige anzeige){return ResponseEntity.ok((AnzeigeDto) anzeigeService.addAnzeige(anzeige).getBody());}
+    public ResponseEntity<AnzeigeDto> addAnzeige(@RequestBody Anzeige anzeige){return ResponseEntity.ok(anzeigeService.addAnzeige(anzeige).getBody());}
     @PutMapping("/updateAnzeige")
     public void updateAnzeige(@RequestBody AnzeigeDto anzeige){
         anzeigeService.updateAnzeigeById(anzeige);

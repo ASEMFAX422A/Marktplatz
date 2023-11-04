@@ -41,6 +41,7 @@ public class UserService {
                 user.getEmail(),
                 user.getPassword(),
                 user.getUsername(),
-                user.getProfilePic());}
+                user.getProfilePic(),
+                user.getRole());}
     public void deleteUser(Long id){userReop.deleteById(id);}
 }

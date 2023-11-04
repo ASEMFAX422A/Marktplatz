@@ -1,7 +1,6 @@
 package com.marktplatz.marktplatz.services;
 
 import com.marktplatz.marktplatz.DTOs.AnzeigeDto;
-import com.marktplatz.marktplatz.DTOs.UserDto;
 import com.marktplatz.marktplatz.entity.Anzeige;
 import com.marktplatz.marktplatz.repository.AnzeigeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AnzeigeService<T> {
+public class AnzeigeService {
 
     @Autowired
     AnzeigeRepo anzeigeRepo;
@@ -20,7 +19,7 @@ public class AnzeigeService<T> {
     public ResponseEntity<List<AnzeigeDto>> getAnzeigen(){
         return ResponseEntity.ok(new AnzeigeDto().AllAnzeigentoDto(anzeigeRepo.findAll()));
     }
-    //Noch nicht fertig
+    //TODO: die methode gibt zurück alle anzeigen vom User. muss noch angepasst werden.
     public ResponseEntity<List<AnzeigeDto>> getAnzeigenByUserId(Long uId){
         return ResponseEntity.ok(new AnzeigeDto().AllAnzeigentoDto(anzeigeRepo.findAllAnzeigen(uId)));
     }
@@ -37,7 +36,7 @@ public class AnzeigeService<T> {
         return ResponseEntity.ok(new AnzeigeDto().anzeigeDto(anzeigeRepo.findeByName(username)));
     }
     public ResponseEntity<AnzeigeDto> addAnzeige(Anzeige anzeige){
-        if (anzeige.getName().isEmpty()&&new AnzeigeDto().anzeigeDto(anzeigeRepo.findeByName(anzeige.getName()))!=null) {
+        if (new AnzeigeDto().anzeigeDto(anzeigeRepo.findeByName(anzeige.getName()))!=null) {
             return (ResponseEntity<AnzeigeDto>) ResponseEntity.badRequest();
         }
         return ResponseEntity.ok(new AnzeigeDto().anzeigeDto((Anzeige) anzeigeRepo.save(anzeige)));

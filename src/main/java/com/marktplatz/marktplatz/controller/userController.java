@@ -18,13 +18,13 @@ public class userController{
     UserService userService;
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<UserDto>> getAllUser(){return ResponseEntity.ok((List<UserDto>) new UserDto().AllUsertoDto(userService.getAllUser()));}
+    public ResponseEntity<List<UserDto>> getAllUser(){return ResponseEntity.ok(new UserDto().AllUsertoDto(userService.getAllUser()));}
     @GetMapping("/getUser/{id}")
-    public ResponseEntity<UserDto> getUserById(@PathVariable Long id){return ResponseEntity.ok((UserDto) userService.getUserById(id).getBody());}
+    public ResponseEntity<UserDto> getUserById(@PathVariable Long id){return ResponseEntity.ok( userService.getUserById(id).getBody());}
     @GetMapping("/getUserByUsername/{username}")
-    public ResponseEntity<UserDto> getUserByUsername(@PathVariable String username){return ResponseEntity.ok((UserDto)userService.getByUsername(username).getBody());}
+    public ResponseEntity<UserDto> getUserByUsername(@PathVariable String username){return ResponseEntity.ok(userService.getByUsername(username).getBody());}
     @PostMapping("/addUser")
-    public ResponseEntity<UserDto> addUser(@RequestBody UserDto user){return ResponseEntity.ok(((ResponseEntity<UserDto>) userService.addUser(user)).getBody());}
+    public ResponseEntity<UserDto> addUser(@RequestBody UserDto user){return ResponseEntity.ok((userService.addUser(user)).getBody());}
     @PutMapping("/updateUser")
     public void updateUser(@RequestBody UserDto user){
         userService.updateUserById(user);
