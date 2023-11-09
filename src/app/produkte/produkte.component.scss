@@ -1,11 +1,17 @@
-.example-card {
+.productcard {
   max-width: 300px;
   padding: 2px;
   margin-right: 40px;
   margin-left: 40px;
+  .shoppingcart {
+    margin-left: 100px;
+  }
+  .chat {
+    margin-left: 30px;
+  }
 }
 
-.example-header-image {
+.profilimage {
   background-image: url('/assets/img/profilepic/2.jpg');
   background-position: right;
   font-size: 1rem;

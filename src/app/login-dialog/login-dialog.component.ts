@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
+import { transition } from '@angular/animations';
 
 
 @Component({
@@ -30,5 +32,10 @@ export class LoginDialogComponent {
 
   closeDialog(){
     this.matDialog.closeAll()
+  }
+
+  openDialogRegister() {
+    this.matDialog.closeAll()
+    this.matDialog.open(RegisterDialogComponent)
   }
 }

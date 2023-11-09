@@ -9,7 +9,7 @@ import { RegisterDialogComponent } from '../register-dialog/register-dialog.comp
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-constructor (public mtDialog: MatDialog){}
+constructor (private mtDialog: MatDialog){}
 
 openDialogLogin() {
   this.mtDialog.open(LoginDialogComponent)

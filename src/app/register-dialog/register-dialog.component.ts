@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 
 
 @Component({
@@ -41,5 +42,9 @@ export class RegisterDialogComponent {
     this.isAllrequired = true;
   }
 
+  openDialogLogin() {
+    this.matDialog.closeAll()
+    this.matDialog.open(LoginDialogComponent)
+  }
 
 }

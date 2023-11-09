@@ -23,8 +23,11 @@
     button {
       font-size: 20px;
     }
-    .cancel {
-      margin-right: 400px;
+    a {
+      cursor: pointer;
+      font-size: 20px;
+      margin-left: 70px;
+      margin-right: 70px;
     }
     .submit {
       background-color: green;

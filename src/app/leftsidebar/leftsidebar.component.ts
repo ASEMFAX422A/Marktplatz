@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CreateproductComponent } from '../createproduct/createproduct.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-leftsidebar',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class LeftsidebarComponent {
   showFiller = false;
+
+  constructor (private dialog:MatDialog) {}
+
+  openDialogcreateProduct(){
+    this.dialog.open(CreateproductComponent)
+  }
 }
