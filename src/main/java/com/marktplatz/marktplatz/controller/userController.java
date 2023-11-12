@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @Controller
-@RequestMapping(value = "/user", method = RequestMethod.POST)
+@RequestMapping(value = "/api/v1/auth/user", method = RequestMethod.POST)
 public class userController{
     @Autowired
     UserService userService;

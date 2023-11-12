@@ -2,7 +2,6 @@ package com.marktplatz.marktplatz.DTOs;
 
 import com.marktplatz.marktplatz.entity.Anzeige;
 import com.marktplatz.marktplatz.entity.UserAnzeige;
-import jakarta.annotation.Nullable;
 import lombok.*;
 
 import java.util.List;

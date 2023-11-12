@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin
 @Controller
-@RequestMapping(value = "/anzeige", method = RequestMethod.POST)
+@RequestMapping(value = "/api/v1/anzeige", method = RequestMethod.POST)
 public class AnzeigeController {
     @Autowired
     AnzeigeService anzeigeService;

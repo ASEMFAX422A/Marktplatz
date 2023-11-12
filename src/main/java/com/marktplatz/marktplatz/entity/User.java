@@ -9,6 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 //TODO: Noch ein Role Colum einfügen.✅
@@ -63,9 +64,18 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        SimpleGrantedAuthority auth = new SimpleGrantedAuthority(role.name());
+        return Collections.singleton(auth);
+    }
+    @Override
+    public String getPassword() {
+        return password;
     }
 
+    @Override
+    public String getUsername() {
+        return username;
+    }
     @Override
     public boolean isAccountNonExpired() {
         return false;
@@ -85,4 +95,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return false;
     }
+
 }

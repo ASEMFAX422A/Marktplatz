@@ -1,7 +1,6 @@
 package com.marktplatz.marktplatz.entity;
 
 import com.marktplatz.marktplatz.DTOs.AnzeigeDto;
-import com.marktplatz.marktplatz.DTOs.UserDto;
 import jakarta.persistence.*;
 import lombok.*;
 
