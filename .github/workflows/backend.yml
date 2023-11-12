@@ -26,10 +26,10 @@ jobs:
 
       - name: Build with Maven
         run: |
-          cd C:\Users\Zaid\IdeaProjects\Marktplatz\pom.xml
+          cd C:\Users\Zaid\IdeaProjects\Marktplatz
           mvn -B package --file pom.xml
 
       - name: Test with Maven
         run: |
-          cd C:\Users\Zaid\IdeaProjects\Marktplatz\pom.xml
+          cd C:\Users\Zaid\IdeaProjects\Marktplatz
           mvn test
