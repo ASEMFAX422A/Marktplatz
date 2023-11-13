@@ -2,9 +2,19 @@
   <h1 class="top">Create an offer:</h1>
   <div class="account">
     <h1 *ngIf="account">Account</h1>
-    <h1 (click)="openDialogLogin()" class="login">Login</h1>
+    <div class="anmeldung">
+      <h1 (click)="openDialogLogin()" class="login">Login</h1>
+      <h1> / </h1>
+      <h1 (click)="openDialogRegister()" class="login">Register</h1>
+    </div>
   </div>
 </div>
 <div class="createproduct">
+  <form class="product">
+    <p><mat-form-field>
+      <input matInput placeholder="Product" formControlName="product">
+      <mat-icon matSuffix>shopping_cart</mat-icon>
 
+    </mat-form-field></p>
+  </form>
 </div>
