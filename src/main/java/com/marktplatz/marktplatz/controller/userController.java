@@ -2,6 +2,7 @@ package com.marktplatz.marktplatz.controller;
 
 import com.marktplatz.marktplatz.DTOs.UserDto;
 import com.marktplatz.marktplatz.services.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,10 +13,12 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @Controller
+@AllArgsConstructor
 @RequestMapping(value = "/api/v1/auth/user", method = RequestMethod.POST)
 public class userController{
     @Autowired
     UserService userService;
+
 
     @GetMapping("/getAll")
     public ResponseEntity<List<UserDto>> getAllUser(){return ResponseEntity.ok(new UserDto().AllUsertoDto(userService.getAllUser()));}
@@ -33,4 +36,9 @@ public class userController{
     public void deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody UserDto user){
+        //UserDto userdto = userService.getByUsername(user.getUsername()).getBody();
+        return ResponseEntity.ok(userService.login(user).getBody());}
 }

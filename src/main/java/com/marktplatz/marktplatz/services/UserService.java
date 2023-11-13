@@ -4,10 +4,15 @@ import com.marktplatz.marktplatz.DTOs.UserDto;
 import com.marktplatz.marktplatz.Roles.Role;
 import com.marktplatz.marktplatz.entity.User;
 import com.marktplatz.marktplatz.repository.UserReop;
+import com.marktplatz.marktplatz.security.JwtGenerator;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,13 +23,16 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-@NoArgsConstructor
+
 public class UserService implements UserDetailsService {
     @Autowired
     private UserReop userReop;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    private final AuthenticationManager authManager;
+    private final JwtGenerator jwtGenerator;
 
 
     public List<User> getAllUser(){
@@ -63,4 +71,16 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userReop.findeByUsername(username);
     }
-}
+
+    public ResponseEntity<String> login(UserDto userDto){
+        if (userDto == null) {
+            return ResponseEntity.status(400).body("Unbekanter user");
+        }
+        Authentication auth = authManager
+                .authenticate(new UsernamePasswordAuthenticationToken(userDto.getUsername(), userDto.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(auth);
+
+        return ResponseEntity.ok("Bearer " + jwtGenerator.generateToken(auth));
+    }
+    }
+
