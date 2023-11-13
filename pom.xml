@@ -71,16 +71,13 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.1.5</version>
                 <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
+                    <mainClass>com.marktplatz.marktplatz.BackendMarktplatzApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
 
 </project>
