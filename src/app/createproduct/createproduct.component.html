@@ -10,7 +10,7 @@
   </div>
 </div>
 <div class="createproduct">
-  <form [formGroup]="productform">
+  <form [formGroup]="productform" (ngSubmit)="onSubmit()">
     <p><mat-form-field>
       <input matInput placeholder="Product" formControlName="product">
       <mat-icon matSuffix>shopping_cart</mat-icon>
