@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CreateproductComponent } from '../createproduct/createproduct.component';
 import { MatDialog } from '@angular/material/dialog';
+import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-leftsidebar',

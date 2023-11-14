@@ -32,9 +32,9 @@
     <mat-error *ngIf="productform.get('price')?.hasError('required')">
       Price is required
     </mat-error>
+    <div class="buttons">
+      <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>
+      <button type="submit" class="submit" mat-raised-button color="warn">Create</button>
+    </div>
   </form>
-  <div class="buttons">
-    <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>
-    <button class="submit" mat-raised-button color="warn">Create</button>
-  </div>
 </div>
