@@ -41,8 +41,9 @@ public class SecurityConfiguration {
                         .ignoringRequestMatchers("/api/v1/auth/**")
                         .csrfTokenRepository(new HttpSessionCsrfTokenRepository()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.GET, "/api/v1/auth/user/getAll").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/auth/user/getAll").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/auth/user/addUser").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/user/login").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/v1/auth/**").hasRole("USER")
                         .requestMatchers(HttpMethod.GET,"/api/v1/auth/**").hasRole("ADMIN")
                         .anyRequest().authenticated())

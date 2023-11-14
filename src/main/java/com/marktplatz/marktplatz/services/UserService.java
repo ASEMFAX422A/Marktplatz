@@ -5,8 +5,8 @@ import com.marktplatz.marktplatz.Roles.Role;
 import com.marktplatz.marktplatz.entity.User;
 import com.marktplatz.marktplatz.repository.UserReop;
 import com.marktplatz.marktplatz.security.JwtGenerator;
+import com.marktplatz.marktplatz.security.TokenResponse;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -30,8 +30,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
+    @Autowired
     private final AuthenticationManager authManager;
+    @Autowired
     private final JwtGenerator jwtGenerator;
 
 
@@ -72,15 +73,16 @@ public class UserService implements UserDetailsService {
         return userReop.findeByUsername(username);
     }
 
-    public ResponseEntity<String> login(UserDto userDto){
-        if (userDto == null) {
-            return ResponseEntity.status(400).body("Unbekanter user");
-        }
+    public TokenResponse login(User request){
         Authentication auth = authManager
-                .authenticate(new UsernamePasswordAuthenticationToken(userDto.getUsername(), userDto.getPassword()));
+                .authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(auth);
 
-        return ResponseEntity.ok("Bearer " + jwtGenerator.generateToken(auth));
+        var jwt=jwtGenerator.generateToken( auth);
+        return TokenResponse.builder()
+                .token(jwt)
+                .build();
     }
+
     }
 

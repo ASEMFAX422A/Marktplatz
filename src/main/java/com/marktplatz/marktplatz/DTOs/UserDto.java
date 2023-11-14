@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Getter
 @Setter
-public class UserDto {
+public class UserDto  {
     private Long   id;
     private String name;
     private Role   role;
