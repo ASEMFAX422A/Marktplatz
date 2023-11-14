@@ -1,8 +1,5 @@
-
-
-// anzeige.dto.ts
 export class AnzeigeDto {
-  id: number; // Annahme: Eindeutige Identifikationsnummer der Anzeige
+  id: number;
   product: string;
   description: string;
   price: number;
