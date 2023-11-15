@@ -1,15 +1,17 @@
-import { Injectable, ValueEqualityFn } from '@angular/core';
-import { LeftsidebarComponent } from './leftsidebar/leftsidebar.component';
-import { AppComponent } from './app.component';
+import { Injectable, Input, ValueEqualityFn } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessagesService {
-  messagesObserver: boolean = false;
+  private booleanMessage = new BehaviorSubject<boolean>(false);
+  messagesObserver = this.booleanMessage.asObservable();
   constructor() { }
 
-  setMessageStatus(value: boolean): void {
-    this.messagesObserver = value;
+  setMessageStatus(status: boolean): void {
+    this.booleanMessage.next(status)
+    console.log("Im Service auf True", + status)
   }
 }

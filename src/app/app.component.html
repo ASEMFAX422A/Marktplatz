@@ -4,10 +4,16 @@
   <div class="searchbar-container">
     <app-searchbar></app-searchbar>
   </div>
-  <div *ngIf="m"
-  <div class="produkte-container">
-    <app-produkte *ngFor="let i of [0, 1, 2]" [user]="username[i]" [product]="postProduct[i]" [price]="postPrice[i]"></app-produkte>
+  <div *ngIf="messagesObserver |async">
+    <div>
+      <h1>wefwfwefwef</h1>
+    </div>
+
   </div>
+    <div *ngIf="(messagesObserver |async) === false" class="produkte-container">
+      <app-produkte *ngFor="let i of [0, 1, 2]" [user]="username[i]" [product]="postProduct[i]" [price]="postPrice[i]"></app-produkte>
+    </div>
+
   <div class="leftsidebar-continer">
     <app-leftsidebar></app-leftsidebar>
   </div>

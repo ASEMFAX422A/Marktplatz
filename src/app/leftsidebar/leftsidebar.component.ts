@@ -16,7 +16,6 @@ export class LeftsidebarComponent {
   openDialogcreateProduct(){
     this.dialog.open(CreateproductComponent);
   }
-
   setMessagesTrue() {
     this.mService.setMessageStatus(true);
   }
