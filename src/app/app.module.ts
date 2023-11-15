@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ProdukteComponent } from './produkte/produkte.component';
-import { SearchbarComponent } from './searchbar/searchbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { LeftsidebarComponent } from './leftsidebar/leftsidebar.component';
@@ -33,7 +32,6 @@ import { AccountsettingsComponent } from './accountsettings/accountsettings.comp
     AppComponent,
     HeaderComponent,
     ProdukteComponent,
-    SearchbarComponent,
     LeftsidebarComponent,
     FooterComponent,
     LoginDialogComponent,
@@ -41,7 +39,7 @@ import { AccountsettingsComponent } from './accountsettings/accountsettings.comp
     CreateproductComponent,
     MessagesComponent,
     PersonalproductsComponent,
-    AccountsettingsComponent
+    AccountsettingsComponent,
   ],
   imports: [
     BrowserModule,
