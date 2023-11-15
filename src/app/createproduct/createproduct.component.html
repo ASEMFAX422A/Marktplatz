@@ -10,11 +10,11 @@
   </div>
 </div>
 <div class="createproduct">
-  <form [formGroup]="productform">
+  <form [formGroup]="productform" (ngSubmit)="onSubmit()">
     <p><mat-form-field>
-      <input matInput placeholder="Product" formControlName="product">
+      <input matInput placeholder="Product" formControlName="name">
       <mat-icon matSuffix>shopping_cart</mat-icon>
-      <mat-error *ngIf="productform.get('product')?.hasError('required')">
+      <mat-error *ngIf="productform.get('name')?.hasError('required')">
         Product is required
       </mat-error>
     </mat-form-field></p>
@@ -23,6 +23,13 @@
       <mat-icon matSuffix>description</mat-icon>
       <mat-error *ngIf="productform.get('description')?.hasError('required')">
         Description is required
+      </mat-error>
+    </mat-form-field></p>
+    <p><mat-form-field>
+      <textarea matInput placeholder="Image" formControlName="image"></textarea>
+      <mat-icon matSuffix>description</mat-icon>
+      <mat-error *ngIf="productform.get('image')?.hasError('required')">
+        Image is required
       </mat-error>
     </mat-form-field></p>
     <p><mat-form-field>
@@ -35,10 +42,13 @@
         Price is invalid
       </mat-error>
     </mat-form-field></p>
+<<<<<<< HEAD
 
+=======
+      <div class="buttons">
+        <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>
+        <button type="submit" class="submit" mat-raised-button color="warn">Create</button>
+      </div>
+>>>>>>> e002b128da072dbb84d2b12a9d0e29eb5d969564
   </form>
-  <div class="buttons">
-    <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>
-    <button class="submit" mat-raised-button color="warn">Create</button>
-  </div>
 </div>

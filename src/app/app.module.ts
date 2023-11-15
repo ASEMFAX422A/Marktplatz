@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ProdukteComponent } from './produkte/produkte.component';
-import { SearchbarComponent } from './searchbar/searchbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { LeftsidebarComponent } from './leftsidebar/leftsidebar.component';
@@ -23,19 +22,24 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateproductComponent } from './createproduct/createproduct.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { MessagesComponent } from './messages/messages.component';
+import { PersonalproductsComponent } from './personalproducts/personalproducts.component';
+import { AccountsettingsComponent } from './accountsettings/accountsettings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ProdukteComponent,
-    SearchbarComponent,
     LeftsidebarComponent,
     FooterComponent,
     LoginDialogComponent,
     RegisterDialogComponent,
-    CreateproductComponent
+    CreateproductComponent,
+    MessagesComponent,
+    PersonalproductsComponent,
+    AccountsettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,8 @@ import { CreateproductComponent } from './createproduct/createproduct.component'
     MatInputModule,
     MatGridListModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

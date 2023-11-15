@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { SidebarstatusService } from './sidebarstatus.service';
 
 
 @Component({
@@ -6,10 +7,22 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  messagesObserver = this.sidebarServ.messagesObserver;
+  productObserver = this.sidebarServ.productObserver;
+  accountObserver = this.sidebarServ.accountObserver;
+  hompageObserver = this.sidebarServ.hompageObserver;
+
+  constructor (private sidebarServ: SidebarstatusService) {}
+
+
+
   username = ['Oliver','Zaid','Besmir ']
   postProduct = ['Fernseher', 'Fernseher', 'Fernseher']
   postPrice = ['300€', '290€', '320€']
-
   title = 'EbayTest';
+
+  ngOnInit(){
+
+  }
 }

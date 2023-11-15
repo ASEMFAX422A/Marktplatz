@@ -1,11 +1,25 @@
 <app-header></app-header>
 
 <div class="felxrow">
-  <div class="searchbar-container">
-    <app-searchbar></app-searchbar>
+  <div *ngIf="accountObserver |async">
+    <app-accountsettings></app-accountsettings>
   </div>
-  <div class="produkte-container">
-    <app-produkte *ngFor="let i of [0, 1, 2]" [user]="username[i]" [product]="postProduct[i]" [price]="postPrice[i]"></app-produkte>
+  <div *ngIf="hompageObserver |async">
+    <div class="produkte-container">
+      <app-produkte *ngFor="let i of [0, 1, 2]" [user]="username[i]" [product]="postProduct[i]" [price]="postPrice[i]"></app-produkte>
+    </div>
+  </div>
+
+  <div *ngIf="productObserver |async">
+    <app-personalproducts></app-personalproducts>
+  </div>
+
+  <div *ngIf="messagesObserver |async">
+    <div>
+      <div>
+        <app-messages></app-messages>
+      </div>
+    </div>
   </div>
   <div class="leftsidebar-continer">
     <app-leftsidebar></app-leftsidebar>

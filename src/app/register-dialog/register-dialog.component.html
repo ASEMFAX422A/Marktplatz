@@ -24,6 +24,9 @@
       <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
         Email is required
       </mat-error>
+      <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
+        Email is invalid
+      </mat-error>
     </mat-form-field></p>
     <p><mat-form-field>
       <input type="{{ isPasswordVisiblePassword ? 'text' : 'password' }}" matInput placeholder="Password" formControlName="password">
@@ -45,11 +48,11 @@
         Confrim Password is required
       </mat-error>
     </mat-form-field></p>
-  </form>
-  </div>
-  <div class="buttons">
+    <div class="buttons">
     <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>
     <a (click)="openDialogLogin()">You already have an Account?</a>
     <button class="submit" mat-raised-button color="warn">Submit</button>
+  </div>
+</form>
   </div>
 </div>

@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AnzeigeDto } from 'src/models/anzeige.models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductapiService {
-  private apiUrl = 'http://localhost:8080';
+  private baseUrl = 'http://localhost:8080/api/v1/anzeige';
 
   constructor(private http: HttpClient) { }
 
-  getDaten(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/api/daten`);
+  addAnzeige(anzeige: AnzeigeDto): Observable<AnzeigeDto> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<AnzeigeDto>(`${this.baseUrl}/addAnzeige`, anzeige, { headers });
   }
-
 }
