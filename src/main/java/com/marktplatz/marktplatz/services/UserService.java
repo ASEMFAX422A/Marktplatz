@@ -5,6 +5,7 @@ import com.marktplatz.marktplatz.Roles.Role;
 import com.marktplatz.marktplatz.entity.User;
 import com.marktplatz.marktplatz.repository.UserReop;
 import com.marktplatz.marktplatz.security.JwtGenerator;
+import com.marktplatz.marktplatz.security.PasswordEncoder;
 import com.marktplatz.marktplatz.security.TokenResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -42,18 +43,18 @@ public class UserService implements UserDetailsService {
     public ResponseEntity<UserDto> getUserById(Long id){
         return  ResponseEntity.ok(new UserDto().OpntionaluserDto(userReop.findById(id)));
     }
-    public ResponseEntity<UserDto> getByUsername(String username){
-        if (username.isEmpty()) {
+    public ResponseEntity<UserDto> getByUsername(UserDto userDto){
+        if (userDto.getUsername().isEmpty()) {
             return (ResponseEntity<UserDto>) ResponseEntity.badRequest();
         }
-        return ResponseEntity.ok(new UserDto().userDto(userReop.findeByUsername(username)));
+        return ResponseEntity.ok(new UserDto().userDto(userReop.findeByUsername(userDto.getUsername())));
     }
 
     //TODO: muss Noch angepasst werden. soll geprüft werden ob der User bzw. Username schon existiert.✅
     public ResponseEntity<UserDto> addUser(UserDto user){
         if (new UserDto().userDto(userReop.findeByUsername(user.getUsername()))!=null) {throw new IllegalStateException("username already taken");}
         if (user.getRole()== null){user.setRole(Role.USER);}
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.bCryptPasswordEncoder().encode(user.getPassword()));
         return ResponseEntity.ok(new UserDto().userDto(userReop.save(new User().toUser(user))));
     }
 
@@ -73,15 +74,16 @@ public class UserService implements UserDetailsService {
         return userReop.findeByUsername(username);
     }
 
-    public TokenResponse login(User request){
-        Authentication auth = authManager
-                .authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(auth);
+    public Boolean login(User request){
+        if (request == null) {
+            throw new IllegalStateException("Eingabe ist Null");
+        }
+        try {
+            UserDto vPassword=new UserDto().userDto(request);
+            UserDto uPasswoed=new UserDto().userDto(userReop.findeByUsername(request.getUsername()));
+            return passwordEncoder.bCryptPasswordEncoder().matches(vPassword.getPassword(),uPasswoed.getPassword());
+        }catch (Exception e){ throw new IllegalStateException("Username oder Password ist Falsch!");}
 
-        var jwt=jwtGenerator.generateToken( auth);
-        return TokenResponse.builder()
-                .token(jwt)
-                .build();
     }
 
     }

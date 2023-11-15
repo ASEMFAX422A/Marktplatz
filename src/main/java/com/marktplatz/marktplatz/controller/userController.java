@@ -26,8 +26,8 @@ public class userController{
     public ResponseEntity<List<UserDto>> getAllUser(){return ResponseEntity.ok(new UserDto().AllUsertoDto(userService.getAllUser()));}
     @GetMapping("/getUser/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable Long id){return ResponseEntity.ok( userService.getUserById(id).getBody());}
-    @GetMapping("/getUserByUsername/{username}")
-    public ResponseEntity<UserDto> getUserByUsername(@PathVariable String username){return ResponseEntity.ok(userService.getByUsername(username).getBody());}
+    @GetMapping("/getUserByUsername")
+    public ResponseEntity<UserDto> getUserByUsername(@RequestBody UserDto userDto){return ResponseEntity.ok(userService.getByUsername(userDto).getBody());}
     @PostMapping("/addUser")
     public ResponseEntity<UserDto> addUser(@RequestBody UserDto user){return ResponseEntity.ok((userService.addUser(user)).getBody());}
     @PutMapping("/updateUser")
@@ -39,8 +39,7 @@ public class userController{
         userService.deleteUser(id);
     }
     @PostMapping("/login")
-    public ResponseEntity<TokenResponse> login(@RequestBody User user){
-
+    public ResponseEntity<Boolean> login(@RequestBody User user){
         return ResponseEntity.ok(userService.login(user));
     }
 

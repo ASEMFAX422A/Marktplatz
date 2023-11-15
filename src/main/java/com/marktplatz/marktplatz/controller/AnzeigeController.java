@@ -8,8 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @Controller
 @RequestMapping(value = "/api/v1/anzeige", method = RequestMethod.POST)
 public class AnzeigeController {
@@ -17,8 +19,7 @@ public class AnzeigeController {
     AnzeigeService anzeigeService;
 
     @GetMapping("/getAll")
-    public ResponseEntity<AnzeigeDto> getAnzeigen(){return  ResponseEntity.ok((AnzeigeDto) anzeigeService.getAnzeigen().getBody());}
-
+    public ResponseEntity<List<AnzeigeDto>> getAnzeigen(){return  ResponseEntity.ok(anzeigeService.getAnzeigen().getBody());}
     @GetMapping("/getAll/{uId}")// Noch nicht fertig
     public ResponseEntity<AnzeigeDto> getAnzeigen(@PathVariable Long uId){return  ResponseEntity.ok((AnzeigeDto) anzeigeService.getAnzeigenByUserId(uId).getBody());}
     @GetMapping("/getAnzeige/{id}")
