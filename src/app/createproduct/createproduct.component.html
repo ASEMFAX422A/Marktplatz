@@ -28,10 +28,14 @@
     <p><mat-form-field>
       <input matInput placeholder="Price" formControlName="price">
       <mat-icon matSuffix>payments</mat-icon>
+      <mat-error *ngIf="productform.get('price')?.hasError('required')">
+        Price is required
+      </mat-error>
+      <mat-error *ngIf="productform.get('price')?.hasError('pattern')">
+        Price is invalid
+      </mat-error>
     </mat-form-field></p>
-    <mat-error *ngIf="productform.get('price')?.hasError('required')">
-      Price is required
-    </mat-error>
+
   </form>
   <div class="buttons">
     <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>
