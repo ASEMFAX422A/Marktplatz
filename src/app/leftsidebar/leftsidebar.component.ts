@@ -9,7 +9,6 @@ import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
   styleUrls: ['./leftsidebar.component.scss']
 })
 export class LeftsidebarComponent {
-  showFiller = false;
 
   constructor (private dialog:MatDialog) {}
 

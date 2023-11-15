@@ -36,7 +36,6 @@ export class CreateproductComponent {
   }
 
   closeDialog() {
-    this.dialog.closeAll();
   }
 
   onSubmit() {
