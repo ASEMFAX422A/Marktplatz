@@ -36,9 +36,7 @@ public class AnzeigeService {
         return ResponseEntity.ok(new AnzeigeDto().anzeigeDto(anzeigeRepo.findeByName(username)));
     }
     public ResponseEntity<AnzeigeDto> addAnzeige(Anzeige anzeige){
-        if (new AnzeigeDto().anzeigeDto(anzeigeRepo.findeByName(anzeige.getName()))!=null) {
-            return (ResponseEntity<AnzeigeDto>) ResponseEntity.badRequest();
-        }
+
         return ResponseEntity.ok(new AnzeigeDto().anzeigeDto((Anzeige) anzeigeRepo.save(anzeige)));
     }
     public void updateAnzeigeById(AnzeigeDto anzeige){
