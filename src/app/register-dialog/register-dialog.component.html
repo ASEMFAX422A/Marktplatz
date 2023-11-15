@@ -24,6 +24,9 @@
       <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
         Email is required
       </mat-error>
+      <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
+        Email is invalid
+      </mat-error>
     </mat-form-field></p>
     <p><mat-form-field>
       <input type="{{ isPasswordVisiblePassword ? 'text' : 'password' }}" matInput placeholder="Password" formControlName="password">

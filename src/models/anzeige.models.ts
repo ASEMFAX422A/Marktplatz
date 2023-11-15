@@ -1,13 +1,13 @@
 export class AnzeigeDto {
-  id: number;
-  product: string;
+  name: string;
   description: string;
-  price: number;
+  preis: number;
+  image: string;
 
-  constructor(id: number, product: string, description: string, price: number) {
-    this.id = id;
-    this.product = product;
+  constructor(name: string, description: string, preis: number, image:string) {
+    this.name = name;
+    this.image = image;
     this.description = description;
-    this.price = price;
+    this.preis = preis;
   }
 }

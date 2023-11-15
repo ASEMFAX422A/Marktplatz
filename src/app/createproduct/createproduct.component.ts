@@ -21,8 +21,9 @@ export class CreateproductComponent {
     private prodser: ProductapiService
   ) {
     this.productform = this.formBuilder.group({
-      product: ['', Validators.required],
+      name: ['', Validators.required],
       description: ['', Validators.required],
+      image: ['', Validators.required],
       price: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
     });
   }

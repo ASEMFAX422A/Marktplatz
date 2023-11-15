@@ -7,7 +7,7 @@ import { AnzeigeDto } from 'src/models/anzeige.models';
   providedIn: 'root'
 })
 export class ProductapiService {
-  private baseUrl = 'http://localhost:8080/anzeige';
+  private baseUrl = 'http://localhost:8080/api/v1/anzeige';
 
   constructor(private http: HttpClient) { }
 

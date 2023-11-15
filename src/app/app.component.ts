@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MessagesService } from './messages.service';
 
 
 @Component({
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor (mServ: MessagesService) {}
   username = ['Oliver','Zaid','Besmir ']
   postProduct = ['Fernseher', 'Fernseher', 'Fernseher']
   postPrice = ['300€', '290€', '320€']

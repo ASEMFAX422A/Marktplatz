@@ -12,7 +12,7 @@
 <div class="createproduct">
   <form [formGroup]="productform" (ngSubmit)="onSubmit()">
     <p><mat-form-field>
-      <input matInput placeholder="Product" formControlName="product">
+      <input matInput placeholder="Product" formControlName="name">
       <mat-icon matSuffix>shopping_cart</mat-icon>
       <mat-error *ngIf="productform.get('product')?.hasError('required')">
         Product is required
@@ -23,6 +23,13 @@
       <mat-icon matSuffix>description</mat-icon>
       <mat-error *ngIf="productform.get('description')?.hasError('required')">
         Description is required
+      </mat-error>
+    </mat-form-field></p>
+    <p><mat-form-field>
+      <textarea matInput placeholder="Image" formControlName="image"></textarea>
+      <mat-icon matSuffix>description</mat-icon>
+      <mat-error *ngIf="productform.get('image')?.hasError('required')">
+        Image is required
       </mat-error>
     </mat-form-field></p>
     <p><mat-form-field>
