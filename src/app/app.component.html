@@ -1,19 +1,23 @@
 <app-header></app-header>
 
 <div class="felxrow">
-  <div class="searchbar-container">
-    <app-searchbar></app-searchbar>
-  </div>
-  <div *ngIf="messagesObserver |async">
-    <div>
-      <h1>wefwfwefwef</h1>
-    </div>
 
-  </div>
-    <div *ngIf="(messagesObserver |async) === false" class="produkte-container">
+  <div *ngIf="(messagesObserver |async) === false">
+    <div class="searchbar-container">
+      <app-searchbar></app-searchbar>
+    </div>
+    <div class="produkte-container">
       <app-produkte *ngFor="let i of [0, 1, 2]" [user]="username[i]" [product]="postProduct[i]" [price]="postPrice[i]"></app-produkte>
     </div>
+  </div>
 
+  <div *ngIf="messagesObserver |async">
+    <div>
+      <div>
+        <app-messages></app-messages>
+      </div>
+    </div>
+  </div>
   <div class="leftsidebar-continer">
     <app-leftsidebar></app-leftsidebar>
   </div>
