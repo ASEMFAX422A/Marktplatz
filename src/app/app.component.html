@@ -5,9 +5,6 @@
     <app-accountsettings></app-accountsettings>
   </div>
   <div *ngIf="hompageObserver |async">
-    <div class="searchbar-container">
-      <app-searchbar></app-searchbar>
-    </div>
     <div class="produkte-container">
       <app-produkte *ngFor="let i of [0, 1, 2]" [user]="username[i]" [product]="postProduct[i]" [price]="postPrice[i]"></app-produkte>
     </div>
