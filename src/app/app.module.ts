@@ -25,6 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CreateproductComponent } from './createproduct/createproduct.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MessagesComponent } from './messages/messages.component';
+import { PersonalproductsComponent } from './personalproducts/personalproducts.component';
+import { AccountsettingsComponent } from './accountsettings/accountsettings.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { MessagesComponent } from './messages/messages.component';
     LoginDialogComponent,
     RegisterDialogComponent,
     CreateproductComponent,
-    MessagesComponent
+    MessagesComponent,
+    PersonalproductsComponent,
+    AccountsettingsComponent
   ],
   imports: [
     BrowserModule,

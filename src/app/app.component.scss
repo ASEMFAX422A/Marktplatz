@@ -9,7 +9,9 @@
   max-width: 1200px;
   .searchbar-container {
     margin-left: 80px;
-    position: absolute;
+    display: flex ;
+    justify-content: center;
+    text-align: center;
   }
   .produkte-container {   //container von den Produkten
     margin-top: 60px;

@@ -14,7 +14,7 @@
     <p><mat-form-field>
       <input matInput placeholder="Product" formControlName="name">
       <mat-icon matSuffix>shopping_cart</mat-icon>
-      <mat-error *ngIf="productform.get('product')?.hasError('required')">
+      <mat-error *ngIf="productform.get('name')?.hasError('required')">
         Product is required
       </mat-error>
     </mat-form-field></p>
@@ -42,9 +42,9 @@
         Price is invalid
       </mat-error>
     </mat-form-field></p>
-        <div class="buttons">
-      <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>
-      <button type="submit" class="submit" mat-raised-button color="warn">Create</button>
-    </div>
+      <div class="buttons">
+        <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>
+        <button type="submit" class="submit" mat-raised-button color="warn">Create</button>
+      </div>
   </form>
 </div>

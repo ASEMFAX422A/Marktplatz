@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MessagesService } from './messages.service';
+import { SidebarstatusService } from './sidebarstatus.service';
 
-describe('MessagesService', () => {
-  let service: MessagesService;
+describe('SidebarstatusService', () => {
+  let service: SidebarstatusService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MessagesService);
+    service = TestBed.inject(SidebarstatusService);
   });
 
   it('should be created', () => {

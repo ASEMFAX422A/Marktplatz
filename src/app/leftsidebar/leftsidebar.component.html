@@ -1,11 +1,52 @@
 <mat-drawer-container class="leftsidebar" autosize>
   <mat-drawer mode="side" opened>
-    <button (click)="setMessagesTrue()" class="messages" mat-raised-button>
-      Messages
-      <mat-icon matSuffix>messages</mat-icon>
-    </button>
+    <div class="accounthome">
+      <button (click)="setAccountTrue()"  mat-raised-button>  <!-- *ngIF abfrage, geht aber auch nur mit Verbindung zur Datenbank-->
+        <div class="leftsidebar-container">
+          <div class="txtbuttons">
+            Account    <!--* Accountname mit verbindung zur Datenbank *-->
+          </div>
+          <mat-icon>person</mat-icon>
+        </div>
+      </button>
+      <button (click)="setHomepageTrue()"  mat-raised-button>  <!-- *ngIF abfrage, geht aber auch nur mit Verbindung zur Datenbank-->
+        <div class="leftsidebar-container">
+          <div class="txtbuttons">
+            Home
+          </div>
+          <mat-icon>home</mat-icon>
+        </div>
+      </button>
+    </div>
+    <div class="messages">
+      <button (click)="setMessagesTrue()"  mat-raised-button>
+        <div class="leftsidebar-container">
+          <div class="txtbuttons">
+            Messages
+          </div>
+          <mat-icon>chat</mat-icon>
+        </div>
+      </button>
+    </div>
+    <div class="showproducts">
+      <button (click)="setProductsTrue()" mat-raised-button>
+        <div class="leftsidebar-container">
+          <div class="txtbuttons">
+            Products
+          </div>
+          <mat-icon>edit_note</mat-icon>
+        </div>
+      </button>
+    </div>
     <div class="createbutton">
-      <button (click)="openDialogcreateProduct()" class="create" mat-raised-button>Create</button>
+      <button (click)="openDialogcreateProduct()" mat-raised-button>
+        <div class="leftsidebar-container">
+          <div class="txtbuttons">
+            Create
+          </div>
+          <mat-icon matSuffix>add_circle</mat-icon>
+        </div>
+      </button>
     </div>
   </mat-drawer>
 </mat-drawer-container>

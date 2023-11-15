@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { MessagesService } from './messages.service';
+import { SidebarstatusService } from './sidebarstatus.service';
 
 
 @Component({
@@ -8,9 +8,15 @@ import { MessagesService } from './messages.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  constructor (private mServ: MessagesService) {}
+  messagesObserver = this.sidebarServ.messagesObserver;
+  productObserver = this.sidebarServ.productObserver;
+  accountObserver = this.sidebarServ.accountObserver;
+  hompageObserver = this.sidebarServ.hompageObserver;
 
-  messagesObserver = this.mServ.messagesObserver;
+  constructor (private sidebarServ: SidebarstatusService) {}
+
+
+
   username = ['Oliver','Zaid','Besmir ']
   postProduct = ['Fernseher', 'Fernseher', 'Fernseher']
   postPrice = ['300€', '290€', '320€']
