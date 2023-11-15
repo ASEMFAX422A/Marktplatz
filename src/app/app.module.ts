@@ -23,7 +23,7 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateproductComponent } from './createproduct/createproduct.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -51,7 +51,8 @@ import { CreateproductComponent } from './createproduct/createproduct.component'
     MatInputModule,
     MatGridListModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
