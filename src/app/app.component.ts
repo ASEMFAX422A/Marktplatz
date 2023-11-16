@@ -1,6 +1,7 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, OnDestroy } from '@angular/core';
 import { SidebarstatusService } from './sidebarstatus.service';
 import { MediaObserver, MediaChange} from '@angular/flex-layout';
+import { Subscription} from 'rxjs';
 
 
 @Component({
@@ -8,13 +9,13 @@ import { MediaObserver, MediaChange} from '@angular/flex-layout';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   messagesObserver = this.sidebarServ.messagesObserver;
   productObserver = this.sidebarServ.productObserver;
   accountObserver = this.sidebarServ.accountObserver;
   hompageObserver = this.sidebarServ.hompageObserver;
 
-  constructor (private sidebarServ: SidebarstatusService) {}
+  constructor (private sidebarServ: SidebarstatusService, public mediaObserver:MediaObserver) {}
 
 
 
@@ -23,7 +24,5 @@ export class AppComponent implements OnInit{
   postPrice = ['300€', '290€', '320€']
   title = 'EbayTest';
 
-  ngOnInit(){
 
-  }
 }
