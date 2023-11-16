@@ -1,6 +1,5 @@
 import { Component, Inject, Input, OnInit, OnDestroy } from '@angular/core';
 import { SidebarstatusService } from './sidebarstatus.service';
-import { MediaObserver, MediaChange} from '@angular/flex-layout';
 import { Subscription} from 'rxjs';
 
 
@@ -15,7 +14,7 @@ export class AppComponent {
   accountObserver = this.sidebarServ.accountObserver;
   hompageObserver = this.sidebarServ.hompageObserver;
 
-  constructor (private sidebarServ: SidebarstatusService, public mediaObserver:MediaObserver) {}
+  constructor (private sidebarServ: SidebarstatusService) {}
 
 
 

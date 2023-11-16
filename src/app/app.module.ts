@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FlexLayoutModule } from '@angular/flex-layout';
-
+import {  } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -57,7 +56,6 @@ import { AccountsettingsComponent } from './accountsettings/accountsettings.comp
     MatDialogModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
