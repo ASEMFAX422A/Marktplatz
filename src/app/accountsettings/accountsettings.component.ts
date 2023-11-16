@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./accountsettings.component.scss']
 })
 export class AccountsettingsComponent {
+  isPasswordVisiblePassword: boolean = false;
 
+  togglePasswordVisibilityPassword(): void {
+    this.isPasswordVisiblePassword = !this.isPasswordVisiblePassword;
+  }
 }

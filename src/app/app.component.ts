@@ -10,7 +10,7 @@ import { Subscription} from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-  export class AppComponent implements OnInit, OnDestroy {
+  export class AppComponent{
     messagesObserver = this.sidebarServ.messagesObserver;
     productObserver = this.sidebarServ.productObserver;
     accountObserver = this.sidebarServ.accountObserver;
@@ -20,21 +20,13 @@ import { Subscription} from 'rxjs';
     postPrice = ['300€', '290€', '320€']
     title = 'EbayTest';
 
-    mediaSub:Subscription;
 
-    constructor(private sidebarServ: SidebarstatusService, public mediaObserver: MediaObserver) {
-      console.log('MediaObserver:', mediaObserver);
-      this.mediaSub = new Subscription();
+    constructor(private sidebarServ: SidebarstatusService ) {
+
     }
 
 
-    ngOnInit(): void {
-      this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange) =>{
-        console.log(result.mqAlias)
-      })
-    }
 
-    ngOnDestroy(): void {
-      this.mediaSub.unsubscribe();
-    }
+
+
   }

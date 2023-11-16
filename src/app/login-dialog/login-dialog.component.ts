@@ -20,7 +20,6 @@ export class LoginDialogComponent {
   constructor(private matDialog:MatDialog, private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }

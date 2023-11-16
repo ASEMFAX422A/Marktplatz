@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +25,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MessagesComponent } from './messages/messages.component';
 import { PersonalproductsComponent } from './personalproducts/personalproducts.component';
 import { AccountsettingsComponent } from './accountsettings/accountsettings.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MainNavComponent } from './main-nav/main-nav.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { AccountsettingsComponent } from './accountsettings/accountsettings.comp
     CreateproductComponent,
     MessagesComponent,
     PersonalproductsComponent,
-    AccountsettingsComponent
+    AccountsettingsComponent,
+    MainNavComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,8 @@ import { AccountsettingsComponent } from './accountsettings/accountsettings.comp
     MatDialogModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FlexLayoutModule
+    MatToolbarModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

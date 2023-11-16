@@ -1,21 +1,12 @@
 .felxrow {
-  display: flex;
-  justify-content: center;
-  margin-top: 1px;
-  margin-left: 220px;
-  min-height: 700px;
-  max-height: 2500px;
-  min-width: 400px;
-  max-width: 1200px;
+  .account-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
   .produkte-container {   //container von den Produkten
     margin-top: 60px;
-    margin-left: 65px;
     padding: 2px;
     display: flex;
-  }
-  .leftsidebar-continer {
-    left: 0;
-    position: absolute;
-    border-top: 2px  solid rgba(79, 250, 0, 0.01) ;
+    justify-content: space-evenly;
   }
 }

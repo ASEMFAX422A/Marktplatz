@@ -12,16 +12,6 @@
       </mat-error>
     </mat-form-field></p>
     <p><mat-form-field>
-      <input matInput placeholder="Email" formControlName="email">
-      <mat-icon matSuffix>drafts</mat-icon>
-      <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
-        Email is required
-      </mat-error>
-      <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
-        Email is invalid
-      </mat-error>
-    </mat-form-field></p>
-    <p><mat-form-field>
       <input type="{{ isPasswordVisiblePassword ? 'text' : 'password' }}" matInput placeholder="Password" formControlName="password">
       <mat-icon (click)="togglePasswordVisibilityPassword()" matSuffix>
         <a *ngIf="isPasswordVisiblePassword">lock_open</a>

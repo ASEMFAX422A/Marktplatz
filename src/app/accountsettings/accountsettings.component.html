@@ -3,4 +3,33 @@
     <h1>Account Settings</h1>
     <mat-icon>person</mat-icon>
   </div>
+  <form class="accountsettings">
+    <div class="pictureusername">
+        <mat-form-field class="fieldusername">
+          <input matInput placeholder="Username" value="MaxMustermann12">
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        <div class="picture">
+          <mat-form-field class="fieldpicture">
+            <input matInput placeholder="Picture" value="Profilpicture">
+            <mat-icon matSuffix>image</mat-icon>
+          </mat-form-field>
+        </div>
+    </div>
+    <div class="feldsettings">
+      <mat-form-field class="fieldemail">
+        <input matInput placeholder="Email" value="maxmustermann@gmail.com">
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="feldsettings">
+      <mat-form-field class="fieldpassword">
+        <input matInput type="{{ isPasswordVisiblePassword ? 'text' : 'password' }}" placeholder="Password" value="test" password>
+        <mat-icon (click)="togglePasswordVisibilityPassword()" matSuffix>
+          <a *ngIf="isPasswordVisiblePassword">lock_open</a>
+          <a *ngIf="!isPasswordVisiblePassword">lock</a>
+        </mat-icon>
+      </mat-form-field>
+    </div>
+  </form>
 </div>
