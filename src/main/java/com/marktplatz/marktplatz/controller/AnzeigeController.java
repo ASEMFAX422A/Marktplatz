@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 @Controller
 @RequestMapping(value = "/api/v1/anzeige", method = RequestMethod.POST)
+@CrossOrigin(origins = "http://localhost:4200",exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"})
 public class AnzeigeController {
     @Autowired
     AnzeigeService anzeigeService;

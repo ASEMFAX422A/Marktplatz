@@ -15,20 +15,24 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
     private final PasswordEncoder passwordEncoder;
-    private final JwtAuthFilter jwtAuthFilter;
+
     private final UserService userService;
 
     public SecurityConfiguration(@Lazy UserService userService, PasswordEncoder passwordEncoder, JwtAuthFilter jwtAuthFilter) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
-        this.jwtAuthFilter = jwtAuthFilter;
+
     }
 
 
@@ -44,15 +48,10 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST,"api/v1/anzeige/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"api/v1/anzeige/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/v1/auth/user/getAll").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/user/addUser").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/user/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/v1/auth/user/getUserByUsername").permitAll()
-                        .requestMatchers(HttpMethod.GET,"/api/v1/auth/**").hasRole("USER")
-                        .requestMatchers(HttpMethod.GET,"/api/v1/auth/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/user/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/auth/user/**").permitAll()
                         .anyRequest().authenticated())
-                .sessionManagement(ses -> ses.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .sessionManagement(ses -> ses.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return http.build();
     }
@@ -69,6 +68,8 @@ public class SecurityConfiguration {
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration authConfig) throws Exception {
+
         return authConfig.getAuthenticationManager();
     }
+
 }
