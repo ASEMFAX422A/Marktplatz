@@ -24,9 +24,4 @@ import { Subscription} from 'rxjs';
     constructor(private sidebarServ: SidebarstatusService ) {
 
     }
-
-
-
-
-
   }
