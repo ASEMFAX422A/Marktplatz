@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,7 +39,7 @@ import { AccountsettingsComponent } from './accountsettings/accountsettings.comp
     CreateproductComponent,
     MessagesComponent,
     PersonalproductsComponent,
-    AccountsettingsComponent,
+    AccountsettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +56,8 @@ import { AccountsettingsComponent } from './accountsettings/accountsettings.comp
     MatGridListModule,
     MatDialogModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

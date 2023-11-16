@@ -1,5 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { SidebarstatusService } from './sidebarstatus.service';
+import { MediaObserver, MediaChange} from '@angular/flex-layout';
 
 
 @Component({
