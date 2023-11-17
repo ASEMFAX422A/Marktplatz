@@ -6,6 +6,7 @@ import com.marktplatz.marktplatz.entity.User;
 import com.marktplatz.marktplatz.repository.UserReop;
 import com.marktplatz.marktplatz.security.PasswordEncoder;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,10 +15,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 @AllArgsConstructor
-
+@NoArgsConstructor
 public class UserService implements UserDetailsService {
     @Autowired
     private UserReop userReop;
@@ -25,7 +27,7 @@ public class UserService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
+    private int rand;
 
     public List<User> getAllUser(){
         return userReop.findAll();
@@ -42,7 +44,8 @@ public class UserService implements UserDetailsService {
 
     //TODO: muss Noch angepasst werden. soll geprüft werden ob der User bzw. Username schon existiert.✅
     public ResponseEntity<UserDto> addUser(UserDto user){
-        if (new UserDto().userDto(userReop.findeByUsername(user.getUsername()))!=null) {throw new IllegalStateException("username already taken");}
+        rand=new Random().nextInt(200001) - 100000;
+        if (new UserDto().userDto(userReop.findeByUsername(user.getUsername()))!=null) { user.setUsername(user.getUsername()+""+ rand);}
         if (user.getRole()== null){user.setRole(Role.USER);}
         user.setPassword(passwordEncoder.bCryptPasswordEncoder().encode(user.getPassword()));
         return ResponseEntity.ok(new UserDto().userDto(userReop.save(new User().toUser(user))));

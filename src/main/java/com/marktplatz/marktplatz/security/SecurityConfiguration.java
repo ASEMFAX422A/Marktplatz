@@ -1,12 +1,6 @@
 package com.marktplatz.marktplatz.security;
 
 
-
-import javax.servlet.*;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
-
 public class SecurityConfiguration  {
 
 
