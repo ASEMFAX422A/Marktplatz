@@ -2,10 +2,9 @@ name: Build & Test exclude live
 
 on:
   push:
-      branches: 
-        - '*'
-        - '!main'
- 
+      branches: [ "main","backend" ]
+  pull_request:
+          branches: [ "main","backend" ]
 
 jobs:
   build_backend:
@@ -28,8 +27,3 @@ jobs:
       - name: Build with Maven
         run: |
           mvn -B package --file pom.xml
-
-  
-        npx playwright test
-
-    
