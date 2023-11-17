@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { SidebarstatusService } from '../sidebarstatus.service';
+import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 
 @Component({
   selector: 'app-main-nav',
@@ -15,11 +16,18 @@ import { SidebarstatusService } from '../sidebarstatus.service';
 })
 export class MainNavComponent {
   private breakpointObserver = inject(BreakpointObserver);
+  anmeldungboolean :boolean = true;
 
   constructor (private dialog:MatDialog,private sidebarServ: SidebarstatusService) {}
 
   openDialogcreateProduct(){
     this.dialog.open(CreateproductComponent);
+  }
+  openDialogLogin() {
+    this.dialog.open(LoginDialogComponent)
+  }
+  openDialogRegister() {
+    this.dialog.open(RegisterDialogComponent)
   }
 
   setMessagesTrue() {

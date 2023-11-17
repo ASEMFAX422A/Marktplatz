@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { ProdukteComponent } from './produkte/produkte.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
@@ -32,7 +31,6 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     ProdukteComponent,
     LeftsidebarComponent,
     FooterComponent,

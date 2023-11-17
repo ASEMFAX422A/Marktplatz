@@ -33,4 +33,29 @@
   z-index: 1;
 }
 
+.anmeldung {
+  margin-left: 70%;
+  .login {
+    cursor: pointer;
+  }
+  .register {
+    cursor: pointer;
+  }
+}
 
+
+@media only screen and (max-width:900px) {
+  .anmeldung {
+    margin-left: 50%;
+  }
+}
+@media only screen and (max-width:550px){
+  .anmeldung {
+    margin-left: 20%;
+  }
+}
+@media only screen and (max-width:350px){
+  .anmeldung {
+    margin-left: 5%;
+  }
+}
