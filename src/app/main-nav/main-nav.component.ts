@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -19,12 +19,16 @@ import { UserapiService } from '../userapi.service';
 export class MainNavComponent {
   private breakpointObserver = inject(BreakpointObserver);
   anmeldungboolean :boolean = false;
-
+  username: string = "anmelden";
 
   constructor (private dialog:MatDialog,private sidebarServ: SidebarstatusService, private userobserver: UserapiService) {}
+
   ngOnInit() {
     this.userobserver.loginRequest$.subscribe((status) => {
       this.anmeldungboolean = status;
+    });
+    this.userobserver.sharedData$.subscribe((string) => {
+      this.username = string;
     });
   }
 

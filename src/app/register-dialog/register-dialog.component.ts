@@ -12,12 +12,12 @@ import { UserDto } from 'src/models/login.modules';
   styleUrls: ['./register-dialog.component.scss']
 })
 export class RegisterDialogComponent {
-  password: string = '';
   isPasswordVisiblePassword: boolean = false;
   isPasswordVisiblePasswordcnfm: boolean = false;
   isSubmitCheckTrue: boolean = false;
   isAllrequired: boolean = false;
   registerForm: FormGroup;
+
 
 
   constructor(private matDialog:MatDialog, private formBuilder: FormBuilder, private prodser: UserapiService) {

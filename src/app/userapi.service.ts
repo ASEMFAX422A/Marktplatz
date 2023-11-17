@@ -11,9 +11,15 @@ import { BehaviorSubject } from 'rxjs';
 export class UserapiService {
   private loginRequestSubject = new BehaviorSubject<boolean>(false);
   loginRequest$ = this.loginRequestSubject.asObservable();
+  private sharedDataSubject = new BehaviorSubject<string>(''); // Hier könnte ein anderer Typ verwendet werden
+  sharedData$: Observable<string> = this.sharedDataSubject.asObservable();
   private baseUrl = 'http://localhost:8080/api/v1/auth/user';
 
   constructor(private http: HttpClient) { }
+
+  updateSharedData(data: string) {
+    this.sharedDataSubject.next(data);
+  }
 
   updateLoginRequest(status: boolean) {
     this.loginRequestSubject.next(status);
