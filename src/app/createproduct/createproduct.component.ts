@@ -5,6 +5,8 @@ import { RegisterDialogComponent } from '../register-dialog/register-dialog.comp
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductapiService } from '../productapi.service';
 import { AnzeigeDto } from 'src/models/anzeige.models';
+import { UserapiService } from '../userapi.service';
+import { UserDto } from 'src/models/login.modules';
 
 @Component({
   selector: 'app-createproduct',
@@ -12,14 +14,15 @@ import { AnzeigeDto } from 'src/models/anzeige.models';
   styleUrls: ['./createproduct.component.scss']
 })
 export class CreateproductComponent {
-  account: boolean = false;
   productform: FormGroup;
+  anmeldungboolean: boolean = false;
+  username: string ="";
+  name: string = "";
+  email: string = "";
+  password: string = "";
+  profilePic: string = "";
 
-  constructor(
-    private dialog: MatDialog,
-    private formBuilder: FormBuilder,
-    private prodser: ProductapiService
-  ) {
+  constructor(private dialog: MatDialog,private formBuilder: FormBuilder,private prodser: ProductapiService, private userObserver: UserapiService) {
     this.productform = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -28,11 +31,44 @@ export class CreateproductComponent {
     });
   }
 
+  ngOnInit() {
+    this.userObserver.loginRequest$.subscribe((status) => {
+      this.anmeldungboolean = status;
+    });
+
+    this.userObserver.loginRequest$.subscribe((status) => {
+      this.anmeldungboolean = status;
+    });
+
+    this.userObserver.username$.subscribe((username) => {
+      this.username = username;
+    });
+
+    this.userObserver.name$.subscribe((name) => {
+      this.name = name;
+    });
+
+    this.userObserver.email$.subscribe((email) => {
+      this.email = email;
+    });
+
+    this.userObserver.password$.subscribe((password) => {
+      this.password = password;
+    });
+
+    this.userObserver.profilePic$.subscribe((profilePic) => {
+      this.profilePic = profilePic;
+    });
+  }
+
+
   openDialogLogin() {
+    this.dialog.closeAll();
     this.dialog.open(LoginDialogComponent);
   }
 
   openDialogRegister() {
+    this.dialog.closeAll();
     this.dialog.open(RegisterDialogComponent);
   }
 

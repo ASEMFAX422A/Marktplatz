@@ -1,11 +1,13 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 import { transition } from '@angular/animations';
 import { UserDto } from 'src/models/login.modules';
 import { UserapiService } from '../userapi.service';
 import { BehaviorSubject } from 'rxjs';
+import { Dialog } from '@angular/cdk/dialog';
+import { CreateproductComponent } from '../createproduct/createproduct.component';
 
 
 
@@ -18,10 +20,11 @@ export class LoginDialogComponent{
   @Output() dataEvent = new EventEmitter<string>();
   isPasswordVisiblePassword: boolean = false;
   registerForm: FormGroup;
-  public username: string ="";
 
 
-  constructor(private matDialog:MatDialog, private formBuilder: FormBuilder, private userObserv: UserapiService) {
+
+
+  constructor(private matDialog:MatDialog, private formBuilder: FormBuilder, private userObserv: UserapiService, private dialogref: MatDialogRef<CreateproductComponent>) {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -33,9 +36,10 @@ export class LoginDialogComponent{
     this.isPasswordVisiblePassword = !this.isPasswordVisiblePassword;
   }
 
-  closeDialog(){
-    this.matDialog.closeAll()
+  closeDialog() {
+    this.matDialog.closeAll();
   }
+
 
   openDialogRegister() {
     this.matDialog.closeAll()
@@ -48,14 +52,18 @@ export class LoginDialogComponent{
       const offerData: UserDto = this.registerForm.value;
       this.userObserv.getLogin(offerData).subscribe(
         (response: boolean) => {
-          this.username = offerData.username
-          this.userObserv.updateSharedData(this.username);
           this.userObserv.updateLoginRequest(response);
-          console.log('Anzeige erfolgreich hinzugefügt:', response, this.username);
+          console.log('Anzeige erfolgreich hinzugefügt:', response);
           this.closeDialog();
         },
         (error) => {
           console.error('Fehler beim Hinzufügen der Anzeige:', error);
+        }
+      );
+      this.userObserv.getUserByUsername(offerData).subscribe(
+        (response: UserDto) => {
+          this.userObserv.updateSharedData(response.username, response.name, response.email, response.password, response.profilePic, response.id, response.role);
+          console.log(response.username, response.name, response.email, response.password, response.profilePic, response.id, response.role)
         }
       );
     }

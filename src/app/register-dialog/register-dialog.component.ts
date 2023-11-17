@@ -22,7 +22,8 @@ export class RegisterDialogComponent {
 
   constructor(private matDialog:MatDialog, private formBuilder: FormBuilder, private prodser: UserapiService) {
     this.registerForm = this.formBuilder.group({
-      fullName: ['', Validators.required],
+      name: ['', Validators.required],
+      profilePic: ['/src/assets/img/profilepic/default.png', Validators.required],
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],

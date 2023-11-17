@@ -6,31 +6,31 @@
   <form class="accountsettings">
     <div class="pictureusername">
         <mat-form-field class="fieldusername">
-          <input matInput placeholder="Username" value="MaxMustermann12">
+          <input matInput placeholder="Username" value="{{ username }}">
           <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
         <div class="picture">
           <mat-form-field class="fieldpicture">
-            <input matInput placeholder="Picture" value="Profilpicture">
+            <input matInput placeholder="Picture" value="{{ profilePic }}">
             <mat-icon matSuffix>image</mat-icon>
           </mat-form-field>
         </div>
     </div>
     <div class="feldsettings">
       <mat-form-field class="fieldfullname">
-        <input matInput placeholder="Full name" value="Max Mustermann">
+        <input matInput placeholder="Full name" value="{{ name }}">
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
     </div>
     <div class="feldsettings">
       <mat-form-field class="fieldemail">
-        <input matInput placeholder="Email" value="maxmustermann@gmail.com">
+        <input matInput placeholder="Email" value="{{ email }}">
         <mat-icon matSuffix>email</mat-icon>
       </mat-form-field>
     </div>
     <div class="feldsettings">
       <mat-form-field class="fieldpassword">
-        <input matInput type="{{ isPasswordVisiblePassword ? 'text' : 'password' }}" placeholder="Password" value="test" password>
+        <input matInput type="{{ isPasswordVisiblePassword ? 'text' : 'password' }}" placeholder="Password" value="{{ password }}">
         <mat-icon (click)="togglePasswordVisibilityPassword()" matSuffix>
           <a *ngIf="isPasswordVisiblePassword">lock_open</a>
           <a *ngIf="!isPasswordVisiblePassword">lock</a>

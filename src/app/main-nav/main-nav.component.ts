@@ -19,7 +19,11 @@ import { UserapiService } from '../userapi.service';
 export class MainNavComponent {
   private breakpointObserver = inject(BreakpointObserver);
   anmeldungboolean :boolean = false;
-  username: string = "anmelden";
+  username: string = "";
+  name: string = "";
+  email: string = "";
+  password: string = "";
+  profilPic: string = "";
 
   constructor (private dialog:MatDialog,private sidebarServ: SidebarstatusService, private userobserver: UserapiService) {}
 
@@ -27,16 +31,34 @@ export class MainNavComponent {
     this.userobserver.loginRequest$.subscribe((status) => {
       this.anmeldungboolean = status;
     });
-    this.userobserver.sharedData$.subscribe((string) => {
-      this.username = string;
+
+    this.userobserver.username$.subscribe((username) => {
+      this.username = username;
+    });
+
+    this.userobserver.name$.subscribe((name) => {
+      this.name = name;
+    });
+
+    this.userobserver.email$.subscribe((email) => {
+      this.email = email;
+    });
+
+    this.userobserver.password$.subscribe((password) => {
+      this.password = password;
+    });
+
+    this.userobserver.profilePic$.subscribe((profilePic) => {
+      this.profilPic = profilePic;
     });
   }
 
   openDialogcreateProduct(){
     this.dialog.open(CreateproductComponent);
+
   }
   openDialogLogin() {
-    this.dialog.open(LoginDialogComponent)
+    this.dialog.open(LoginDialogComponent);
   }
   openDialogRegister() {
     this.dialog.open(RegisterDialogComponent)

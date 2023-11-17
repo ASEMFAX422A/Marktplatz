@@ -1,8 +1,10 @@
 <div class="header">
   <h1 class="top">Create an offer:</h1>
   <div class="account">
-    <h1 *ngIf="account">Account</h1>
     <div class="anmeldung">
+      <h1 *ngIf="anmeldungboolean">{{ username }}</h1>
+    </div>
+    <div *ngIf="!anmeldungboolean" class="anmeldung">
       <h1 (click)="openDialogLogin()" class="login">Login</h1>
       <h1> / </h1>
       <h1 (click)="openDialogRegister()" class="login">Register</h1>
