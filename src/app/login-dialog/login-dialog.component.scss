@@ -1,35 +1,43 @@
-.loginDialog{
+.loginDialog {
   width: 700px;
+
   .header {
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
     align-items: center;
+
     h1 {
       font-size: 25px;
     }
   }
+
   .contact {
     text-align: center;
     align-items: center;
+
     mat-form-field {
       width: 600px;
     }
   }
-  .buttons{
+
+  .buttons {
     margin-bottom: 40px;
     text-align: center;
     align-items: center;
+
     button {
       margin-top: 20px;
       font-size: 20px;
     }
+
     a {
       cursor: pointer;
       font-size: 20px;
       margin-left: 70px;
       margin-right: 70px;
     }
+
     .submit {
       margin-left: 400px;
       background-color: green;
@@ -37,39 +45,47 @@
   }
 }
 
-@media only screen and (max-width:768px){
-  .loginDialog{
+@media only screen and (max-width:768px) {
+  .loginDialog {
     width: 500px;
+
     .header {
       margin-top: 20px;
       margin-bottom: 20px;
       text-align: center;
       align-items: center;
+
       h1 {
         font-size: 25px;
       }
     }
+
     .contact {
       text-align: center;
       align-items: center;
+
       mat-form-field {
         width: 400px;
       }
     }
-    .buttons{
+
+    .buttons {
       margin-bottom: 40px;
       text-align: center;
       align-items: center;
+
       button {
         margin-top: 20px;
         font-size: 20px;
       }
+
       a {
         cursor: pointer;
         font-size: 20px;
         margin-left: 70px;
         margin-right: 70px;
       }
+
       .submit {
         margin-left: 230px;
         background-color: green;
@@ -78,39 +94,47 @@
   }
 }
 
-@media only screen and (max-width:660px){
-  .loginDialog{
+@media only screen and (max-width:660px) {
+  .loginDialog {
     width: 340px;
+
     .header {
       margin-top: 10px;
       margin-bottom: 10px;
       text-align: center;
       align-items: center;
+
       h1 {
         font-size: 20px;
       }
     }
+
     .contact {
       text-align: center;
       align-items: center;
+
       mat-form-field {
         width: 250px;
       }
     }
-    .buttons{
+
+    .buttons {
       margin-bottom: 20px;
       text-align: center;
       align-items: center;
+
       button {
         margin-top: 20px;
         font-size: 10px;
       }
+
       a {
         cursor: pointer;
         font-size: 12px;
         margin-left: 10px;
         margin-right: 10px;
       }
+
       .submit {
         margin-left: 170px;
         background-color: green;
@@ -120,46 +144,52 @@
 }
 
 
-@media only screen and (max-width:455px){
-  .loginDialog{
+@media only screen and (max-width:455px) {
+  .loginDialog {
     width: 250px;
+
     .header {
       margin-top: 10px;
       margin-bottom: 10px;
       text-align: center;
       align-items: center;
+
       h1 {
         font-size: 20px;
       }
     }
+
     .contact {
       text-align: center;
       align-items: center;
+
       mat-form-field {
         width: 200px;
       }
     }
-    .buttons{
+
+    .buttons {
       margin-bottom: 20px;
       text-align: center;
       align-items: center;
+
       button {
         margin-top: 20px;
         font-size: 10px;
         margin-bottom: 10px;
-        }
-        a {
-          cursor: pointer;
-          font-size: 12px;
-          margin-left: 10px;
-          margin-right: 10px;
-        }
-        .submit {
-          margin-left: 50px;
-          background-color: green;
-        }
+      }
+
+      a {
+        cursor: pointer;
+        font-size: 12px;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .submit {
+        margin-left: 50px;
+        background-color: green;
       }
     }
   }
-
-
+}
