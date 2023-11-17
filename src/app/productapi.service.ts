@@ -12,7 +12,6 @@ export class ProductapiService {
   constructor(private http: HttpClient) { }
 
   addAnzeige(anzeige: AnzeigeDto): Observable<AnzeigeDto> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<AnzeigeDto>(`${this.baseUrl}/addAnzeige`, anzeige, { headers });
+    return this.http.post<AnzeigeDto>(`${this.baseUrl}/addAnzeige`, anzeige);
   }
 }

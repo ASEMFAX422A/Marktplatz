@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
+import { UserapiService } from '../userapi.service';
+import { UserDto } from 'src/models/login.modules';
 
 
 @Component({
@@ -18,7 +20,7 @@ export class RegisterDialogComponent {
   registerForm: FormGroup;
 
 
-  constructor(private matDialog:MatDialog, private formBuilder: FormBuilder) {
+  constructor(private matDialog:MatDialog, private formBuilder: FormBuilder, private prodser: UserapiService) {
     this.registerForm = this.formBuilder.group({
       fullName: ['', Validators.required],
       username: ['', Validators.required],
@@ -45,6 +47,21 @@ export class RegisterDialogComponent {
   openDialogLogin() {
     this.matDialog.closeAll()
     this.matDialog.open(LoginDialogComponent)
+  }
+
+  onSubmit() {
+    if (this.registerForm.valid) {
+      const offerData: UserDto = this.registerForm.value;
+      this.prodser.addUser(offerData).subscribe(
+        (response) => {
+          console.log('Anzeige erfolgreich hinzugefügt:', response);
+          this.registerForm.reset();
+        },
+        (error) => {
+          console.error('Fehler beim Hinzufügen der Anzeige:', error);
+        }
+      );
+    }
   }
 
 }
