@@ -6,12 +6,10 @@ import javax.crypto.SecretKey;
 
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Component;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
 
 public class JwtGenerator {
+   /*
     private final SecretKey key = Jwts.SIG.HS256.key().build();
 
     public String generateToken(Authentication authentication) {
@@ -50,4 +48,6 @@ public class JwtGenerator {
                     ex.fillInStackTrace());
         }
     }
+}
+*/
 }

@@ -2,7 +2,6 @@ package com.marktplatz.marktplatz.controller;
 
 import com.marktplatz.marktplatz.DTOs.UserDto;
 import com.marktplatz.marktplatz.entity.User;
-import com.marktplatz.marktplatz.security.TokenResponse;
 import com.marktplatz.marktplatz.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
