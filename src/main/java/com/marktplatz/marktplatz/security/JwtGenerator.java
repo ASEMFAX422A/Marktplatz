@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
-@Component
 public class JwtGenerator {
     private final SecretKey key = Jwts.SIG.HS256.key().build();
 
