@@ -2,9 +2,10 @@ name: Build & Test exclude live
 
 on:
   push:
-      branches: [ "main","backend" ]
-  pull_request:
-          branches: [ "main","backend" ]
+      branches: 
+        - '*'
+        - '!main'
+ 
 
 jobs:
   build_backend:
