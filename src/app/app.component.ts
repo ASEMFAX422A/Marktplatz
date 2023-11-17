@@ -15,9 +15,10 @@ import { Subscription} from 'rxjs';
     productObserver = this.sidebarServ.productObserver;
     accountObserver = this.sidebarServ.accountObserver;
     hompageObserver = this.sidebarServ.hompageObserver;
-    username = ['Oliver','Zaid','Besmir ']
-    postProduct = ['Fernseher', 'Fernseher', 'Fernseher']
-    postPrice = ['300€', '290€', '320€']
+    username = ['Oliver','Zaid','Besmir ', 'Oliver','Zaid','Besmir ']
+    postProduct = ['Fernseher', 'Fernseher', 'Fernseher', 'Fernseher', 'Fernseher', 'Fernseher']
+    postPrice = ['300€', '290€', '320€', '300€', '290€', '320€']
+    postImage = ['/src/assets/img/profilepic/2.jpg' ]
     title = 'EbayTest';
 
 

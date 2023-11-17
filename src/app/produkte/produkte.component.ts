@@ -12,5 +12,6 @@ export class ProdukteComponent {
   @Input() user:string ='';
   @Input() product:string ='';
   @Input() price:string ='';
+  @Input() image:string ='';
   constructor(public pd: ProductService) {}
 }

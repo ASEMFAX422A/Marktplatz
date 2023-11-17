@@ -4,9 +4,8 @@
     justify-content: space-evenly;
   }
   .produkte-container {   //container von den Produkten
-    margin-top: 60px;
-    padding: 2px;
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
   }
 }

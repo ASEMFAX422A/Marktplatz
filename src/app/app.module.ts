@@ -27,6 +27,8 @@ import { AccountsettingsComponent } from './accountsettings/accountsettings.comp
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MainNavComponent } from './main-nav/main-nav.component';
+import {MatTabsModule} from '@angular/material/tabs';
+
 
 @NgModule({
   declarations: [
@@ -60,8 +62,8 @@ import { MainNavComponent } from './main-nav/main-nav.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatToolbarModule,
-    MatListModule
-
+    MatListModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

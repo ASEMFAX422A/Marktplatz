@@ -1,0 +1,21 @@
+.personalproduct-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.app-produkte {
+  /* Hier kannst du Stile für deine app-produkte-Komponente hinzufügen, wenn nötig */
+  margin-right: 10px; /* Platz zwischen den Produkten */
+}
+
+.page-container {
+  position: relative;
+}
+
+.products-container {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+}

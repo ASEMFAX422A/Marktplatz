@@ -22,8 +22,10 @@
       </mat-error>
     </mat-form-field></p>
   <div class="buttons">
+    <div class="alreadyaccount">
+      <a (click)="openDialogRegister()">You already have an Account?</a>
+    </div>
     <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>
-    <a (click)="openDialogRegister()">You don't have an Account?</a>
     <button class="submit" mat-raised-button color="warn">Submit</button>
   </div>
 </form>
