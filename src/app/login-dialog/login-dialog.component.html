@@ -26,7 +26,7 @@
       <a (click)="openDialogRegister()">You already have an Account?</a>
     </div>
     <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>
-    <button class="submit" mat-raised-button color="warn">Submit</button>
+    <button (click)="onSubmit()" class="submit" mat-raised-button color="warn">Submit</button>
   </div>
 </form>
 </div>

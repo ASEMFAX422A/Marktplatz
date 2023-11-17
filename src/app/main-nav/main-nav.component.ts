@@ -8,6 +8,8 @@ import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { SidebarstatusService } from '../sidebarstatus.service';
 import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
+import { RegisteredMessage } from '@angular/cdk/a11y';
+import { UserapiService } from '../userapi.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -16,9 +18,15 @@ import { RegisterDialogComponent } from '../register-dialog/register-dialog.comp
 })
 export class MainNavComponent {
   private breakpointObserver = inject(BreakpointObserver);
-  anmeldungboolean :boolean = true;
+  anmeldungboolean :boolean = false;
 
-  constructor (private dialog:MatDialog,private sidebarServ: SidebarstatusService) {}
+
+  constructor (private dialog:MatDialog,private sidebarServ: SidebarstatusService, private userobserver: UserapiService) {}
+  ngOnInit() {
+    this.userobserver.loginRequest$.subscribe((status) => {
+      this.anmeldungboolean = status;
+    });
+  }
 
   openDialogcreateProduct(){
     this.dialog.open(CreateproductComponent);
@@ -60,4 +68,5 @@ export class MainNavComponent {
       map(result => result.matches),
       shareReplay()
     );
+
 }

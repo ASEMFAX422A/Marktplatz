@@ -12,7 +12,6 @@ import { UserapiService } from '../userapi.service';
   styleUrls: ['./login-dialog.component.scss']
 })
 export class LoginDialogComponent{
-  password: string = '';
   isPasswordVisiblePassword: boolean = false;
   registerForm: FormGroup;
 
@@ -36,13 +35,15 @@ export class LoginDialogComponent{
     this.matDialog.open(RegisterDialogComponent)
   }
 
+
   onSubmit() {
     if (this.registerForm.valid) {
       const offerData: UserDto = this.registerForm.value;
-      this.prodser.addUser(offerData).subscribe(
-        (response) => {
+      this.prodser.getLogin(offerData).subscribe(
+        (response: boolean) => {
+          this.prodser.updateLoginRequest(response);
           console.log('Anzeige erfolgreich hinzugefügt:', response);
-          this.registerForm.reset();
+          this.closeDialog();
         },
         (error) => {
           console.error('Fehler beim Hinzufügen der Anzeige:', error);

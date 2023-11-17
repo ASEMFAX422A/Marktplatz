@@ -70,7 +70,10 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>EbayTest</span>
-      <div class="anmeldung">
+      <div *ngIf="anmeldungboolean" class="anmeldung">
+        <a>Angemeldet</a>
+      </div>
+      <div *ngIf="!anmeldungboolean" class="anmeldung">
         <a class="login" (click)="openDialogLogin()">Login</a>
         <a>/</a>
         <a class="register" (click)="openDialogRegister()">Register</a>
