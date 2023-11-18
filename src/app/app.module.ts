@@ -28,6 +28,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 @NgModule({
@@ -63,7 +65,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     HttpClientModule,
     MatToolbarModule,
     MatListModule,
-    MatTabsModule
+    MatTabsModule,
+    ToastrModule.forRoot({ enableHtml: true})
   ],
   providers: [],
   bootstrap: [AppComponent]

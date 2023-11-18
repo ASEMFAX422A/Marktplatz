@@ -8,6 +8,7 @@ import { UserapiService } from '../userapi.service';
 import { BehaviorSubject } from 'rxjs';
 import { Dialog } from '@angular/cdk/dialog';
 import { CreateproductComponent } from '../createproduct/createproduct.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -24,7 +25,7 @@ export class LoginDialogComponent{
 
 
 
-  constructor(private matDialog:MatDialog, private formBuilder: FormBuilder, private userObserv: UserapiService, private dialogref: MatDialogRef<CreateproductComponent>) {
+  constructor(private matDialog:MatDialog, private formBuilder: FormBuilder, private userObserv: UserapiService, private dialogref: MatDialogRef<CreateproductComponent>, private toastr: ToastrService) {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -54,6 +55,7 @@ export class LoginDialogComponent{
         (response: boolean) => {
           this.userObserv.updateLoginRequest(response);
           console.log('Anzeige erfolgreich hinzugefügt:', response);
+          this.toastr.success("Login Success");
           this.closeDialog();
         },
         (error) => {
