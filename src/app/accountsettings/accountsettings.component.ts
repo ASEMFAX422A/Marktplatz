@@ -5,21 +5,20 @@ import { UserDto } from 'src/models/login.modules';
 @Component({
   selector: 'app-accountsettings',
   templateUrl: './accountsettings.component.html',
-  styleUrls: ['./accountsettings.component.scss']
+  styleUrls: ['./accountsettings.component.scss'],
 })
 export class AccountsettingsComponent {
   isPasswordVisiblePassword: boolean = false;
   anmeldungboolean: boolean = false;
-  username: string = "";
-  name: string = "";
-  email: string = "";
-  password: string = "";
-  profilePic: string = "";
-  role: string = "";
+  username: string = '';
+  name: string = '';
+  email: string = '';
+  password: string = '';
+  profilePic: string = '';
+  role: string = '';
   id: number = 0;
 
-
- constructor(private userObserver: UserapiService) {}
+  constructor(private userObserver: UserapiService) {}
 
   ngOnInit() {
     this.userObserver.loginRequest$.subscribe((status) => {
@@ -48,7 +47,6 @@ export class AccountsettingsComponent {
       this.profilePic = value;
     });
   }
-
 
   togglePasswordVisibilityPassword(): void {
     this.isPasswordVisiblePassword = !this.isPasswordVisiblePassword;

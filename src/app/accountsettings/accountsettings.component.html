@@ -5,17 +5,19 @@
   </div>
   <form class="accountsettings">
     <div class="pictureusername">
+      <div class="pic">
+        <img src="{{ profilePic }}">
+      </div>
+      <div class="picture">
         <mat-form-field class="fieldusername">
           <input matInput placeholder="Username" value="{{ username }}">
           <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
-        <img src="{{ profilePic }}" class="profile">
-        <div class="picture">
-          <mat-form-field class="fieldpicture">
-            <input matInput placeholder="Picture" value="{{ profilePic }}">
-            <mat-icon matSuffix>image</mat-icon>
-          </mat-form-field>
-        </div>
+        <mat-form-field class="fieldpicture">
+          <input matInput placeholder="Picture" value="{{ profilePic }}">
+          <mat-icon matSuffix>image</mat-icon>
+        </mat-form-field>
+      </div>
     </div>
     <div class="feldsettings">
       <mat-form-field class="fieldfullname">
@@ -31,7 +33,8 @@
     </div>
     <div class="feldsettings">
       <mat-form-field class="fieldpassword">
-        <input matInput type="{{ isPasswordVisiblePassword ? 'text' : 'password' }}" placeholder="Password" value="{{ password }}">
+        <input matInput type="{{ isPasswordVisiblePassword ? 'text' : 'password' }}" placeholder="Password"
+          value="{{ password }}">
         <mat-icon (click)="togglePasswordVisibilityPassword()" matSuffix>
           <a *ngIf="isPasswordVisiblePassword">lock_open</a>
           <a *ngIf="!isPasswordVisiblePassword">lock</a>

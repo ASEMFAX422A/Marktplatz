@@ -14,39 +14,39 @@
 <div class="createproduct">
   <form [formGroup]="productform" (ngSubmit)="onSubmit()">
     <p><mat-form-field>
-      <input matInput placeholder="Product" formControlName="name">
-      <mat-icon matSuffix>shopping_cart</mat-icon>
-      <mat-error *ngIf="productform.get('name')?.hasError('required')">
-        Product is required
-      </mat-error>
-    </mat-form-field></p>
+        <input matInput placeholder="Product" formControlName="name">
+        <mat-icon matSuffix>shopping_cart</mat-icon>
+        <mat-error *ngIf="productform.get('name')?.hasError('required')">
+          Product is required
+        </mat-error>
+      </mat-form-field></p>
     <p><mat-form-field>
-      <textarea matInput placeholder="Description" formControlName="description"></textarea>
-      <mat-icon matSuffix>description</mat-icon>
-      <mat-error *ngIf="productform.get('description')?.hasError('required')">
-        Description is required
-      </mat-error>
-    </mat-form-field></p>
+        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+        <mat-icon matSuffix>description</mat-icon>
+        <mat-error *ngIf="productform.get('description')?.hasError('required')">
+          Description is required
+        </mat-error>
+      </mat-form-field></p>
     <p><mat-form-field>
-      <textarea matInput placeholder="Image" formControlName="image"></textarea>
-      <mat-icon matSuffix>description</mat-icon>
-      <mat-error *ngIf="productform.get('image')?.hasError('required')">
-        Image is required
-      </mat-error>
-    </mat-form-field></p>
+        <textarea matInput placeholder="Image" formControlName="image"></textarea>
+        <mat-icon matSuffix>description</mat-icon>
+        <mat-error *ngIf="productform.get('image')?.hasError('required')">
+          Image is required
+        </mat-error>
+      </mat-form-field></p>
     <p><mat-form-field>
-      <input matInput placeholder="Price" formControlName="price">
-      <mat-icon matSuffix>payments</mat-icon>
-      <mat-error *ngIf="productform.get('price')?.hasError('required')">
-        Price is required
-      </mat-error>
-      <mat-error *ngIf="productform.get('price')?.hasError('pattern')">
-        Price is invalid
-      </mat-error>
-    </mat-form-field></p>
-      <div class="buttons">
-        <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>
-        <button type="submit" class="submit" mat-raised-button color="warn">Create</button>
-      </div>
+        <input matInput placeholder="Price" formControlName="price">
+        <mat-icon matSuffix>payments</mat-icon>
+        <mat-error *ngIf="productform.get('price')?.hasError('required')">
+          Price is required
+        </mat-error>
+        <mat-error *ngIf="productform.get('price')?.hasError('pattern')">
+          Price is invalid
+        </mat-error>
+      </mat-form-field></p>
+    <div class="buttons">
+      <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>
+      <button type="submit" class="submit" mat-raised-button color="warn">Create</button>
+    </div>
   </form>
 </div>

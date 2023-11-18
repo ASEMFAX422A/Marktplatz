@@ -1,18 +1,23 @@
 .sidenav-container {
   height: 100%;
+
   mat-nav-list {
-    .left{
+    .left {
       button {
         width: 150px;
-        margin-top: 70px; /**70px**/
+        margin-top: 70px;
+        /**70px**/
       }
+
       width: 200px;
       text-align: center;
       align-items: center;
+
       .leftsidebar-container {
         display: flex;
         justify-content: center;
         text-align: center;
+
         .txtbuttons {
           font-size: 15px;
           margin-right: 5px;
@@ -31,13 +36,19 @@
   position: sticky;
   top: 0;
   z-index: 1;
+
+  a {
+    font-size: 20px;
+  }
 }
 
 .anmeldung {
   margin-left: 70%;
+
   .login {
     cursor: pointer;
   }
+
   .register {
     cursor: pointer;
   }
@@ -46,16 +57,38 @@
 
 @media only screen and (max-width:900px) {
   .anmeldung {
-    margin-left: 50%;
+    margin-left: 45%;
+  }
+
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    a {
+      font-size: 15px;
+    }
   }
 }
-@media only screen and (max-width:550px){
+
+@media only screen and (max-width:550px) {
   .anmeldung {
-    margin-left: 20%;
+    margin-left: 15%;
+
+    .mat-toolbar.mat-primary {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+
+      a {
+        font-size: 10px;
+      }
+    }
   }
 }
-@media only screen and (max-width:350px){
+
+@media only screen and (max-width:350px) {
   .anmeldung {
-    margin-left: 5%;
+    margin-left: 6%;
   }
 }

@@ -1,17 +1,18 @@
 <mat-drawer-container class="leftsidebar" autosize>
   <mat-drawer mode="side" opened>
     <div class="accountbutton">
-      <button class="account" (click)="setAccountTrue()"  mat-raised-button>  <!-- *ngIF abfrage, geht aber auch nur mit Verbindung zur Datenbank-->
+      <button class="account" (click)="setAccountTrue()" mat-raised-button>
+        <!-- *ngIF abfrage, geht aber auch nur mit Verbindung zur Datenbank-->
         <div class="leftsidebar-container">
           <div class="txtbuttons">
-            Account    <!--* Accountname mit verbindung zur Datenbank *-->
+            Account <!--* Accountname mit verbindung zur Datenbank *-->
           </div>
           <mat-icon>person</mat-icon>
         </div>
       </button>
     </div>
     <div class="hompagebutton">
-      <button class="homepage" (click)="setHomepageTrue()"  mat-raised-button>
+      <button class="homepage" (click)="setHomepageTrue()" mat-raised-button>
         <div class="leftsidebar-container">
           <div class="txtbuttons">
             Home
@@ -21,7 +22,7 @@
       </button>
     </div>
     <div class="messages">
-      <button class="message" (click)="setMessagesTrue()"  mat-raised-button>
+      <button class="message" (click)="setMessagesTrue()" mat-raised-button>
         <div class="leftsidebar-container">
           <div class="txtbuttons">
             Messages
