@@ -18,12 +18,10 @@ export class RegisterDialogComponent {
   isAllrequired: boolean = false;
   registerForm: FormGroup;
 
-
-
   constructor(private matDialog:MatDialog, private formBuilder: FormBuilder, private prodser: UserapiService) {
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
-      profilePic: ['/src/assets/img/profilepic/default.png', Validators.required],
+      profilePic: ['assets/img/profilepic/default.png', Validators.required],
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
