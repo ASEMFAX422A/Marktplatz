@@ -22,4 +22,10 @@ export class ProductapiService {
   updateAnzeige(anzeige: AnzeigeDto): Observable<AnzeigeDto> {
     return this.http.put<AnzeigeDto>(`${this.baseUrl}/updateAnzeige/${anzeige.id}`, anzeige);
   }
+
+  getAnzeigeByName(name: string): Observable<AnzeigeDto> {
+    const headers = new HttpHeaders().set('Accept-Encoding', 'gzip');
+    const url = `${this.baseUrl}/getAnzeigeByName/${name}`;
+    return this.http.get<AnzeigeDto>(url,{headers});
+  }
 }

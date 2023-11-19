@@ -8,9 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 
 export class ProdukteComponent {
-  @Input() user:string ='';
+  @Input() user:string = "" ;
   @Input() product:string ='';
   @Input() price:number =0;
   @Input() image:string ='';
+  @Input() description:string ="";
   constructor() {}
 }

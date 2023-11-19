@@ -22,9 +22,6 @@ export class LoginDialogComponent{
   isPasswordVisiblePassword: boolean = false;
   registerForm: FormGroup;
 
-
-
-
   constructor(private matDialog:MatDialog, private formBuilder: FormBuilder, private userObserv: UserapiService, private dialogref: MatDialogRef<CreateproductComponent>, private toastr: ToastrService) {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -47,58 +44,48 @@ export class LoginDialogComponent{
     this.matDialog.open(RegisterDialogComponent)
   }
 
+  onSubmit() {
+    if (this.registerForm.valid) {
+      const offerData: UserDto = this.registerForm.value;
 
-  // login-dialog.component.ts
-// ...
+      this.userObserv.getLogin(offerData).subscribe(
+        (isLoggedIn: boolean) => {
+          this.userObserv.updateLoginRequest(isLoggedIn);
+          localStorage.setItem('isLoggedIn', isLoggedIn.toString());
+          if (isLoggedIn) {
+            this.userObserv.getUserByUsername(offerData).subscribe(
+              (response: UserDto) => {
+                localStorage.setItem('currentUser', JSON.stringify(response));
 
-onSubmit() {
-  if (this.registerForm.valid) {
-    const offerData: UserDto = this.registerForm.value;
+                this.userObserv.updateSharedData(
+                  response.username,
+                  response.name,
+                  response.email,
+                  response.password,
+                  response.profilePic,
+                  response.id,
+                  response.role
+                );
 
-    this.userObserv.getLogin(offerData).subscribe(
-      (isLoggedIn: boolean) => {
-        // Anmeldestatus erfolgreich erhalten
-        this.userObserv.updateLoginRequest(isLoggedIn);
+                console.log(response.username, response.name, response.email, response.password, response.profilePic, response.id, response.role);
+              }
+            );
+          }
 
-        // Anmeldestatus im lokalen Speicher speichern
-        localStorage.setItem('isLoggedIn', isLoggedIn.toString());
+          if (isLoggedIn) {
+            this.toastr.success("Login was successful", "", { positionClass: 'toast-top-center' });
+          } else {
+            this.toastr.error("Login failed", "", { positionClass: 'toast-top-center' });
+          }
 
-        // Weitere Benutzerinformationen abrufen, falls angemeldet
-        if (isLoggedIn) {
-          this.userObserv.getUserByUsername(offerData).subscribe(
-            (response: UserDto) => {
-              // Benutzerdaten im lokalen Speicher speichern
-              localStorage.setItem('currentUser', JSON.stringify(response));
-
-              this.userObserv.updateSharedData(
-                response.username,
-                response.name,
-                response.email,
-                response.password,
-                response.profilePic,
-                response.id,
-                response.role
-              );
-
-              console.log(response.username, response.name, response.email, response.password, response.profilePic, response.id, response.role);
-            }
-          );
-        }
-
-        if (isLoggedIn) {
-          this.toastr.success("Login was successful", "", { positionClass: 'toast-top-center' });
-        } else {
+          this.closeDialog();
+        },
+        (error) => {
           this.toastr.error("Login failed", "", { positionClass: 'toast-top-center' });
+          this.closeDialog();
+          console.error('Error during login:', error);
         }
-
-        this.closeDialog();
-      },
-      (error) => {
-        this.toastr.error("Login failed", "", { positionClass: 'toast-top-center' });
-        this.closeDialog();
-        console.error('Error during login:', error);
-      }
-    );
+      );
+    }
   }
-}
 }

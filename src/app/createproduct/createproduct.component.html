@@ -12,6 +12,11 @@
   </div>
 </div>
 <div class="createproduct">
+  <div class="showproductpic">
+    <img [src]="url">
+    <input type="file" (change)="onFileChange($event)" style="display: none;" #fileInput>
+    <button (click)="fileInput.click()" mat-raised-button color="primary">Choose File</button>
+  </div>
   <form [formGroup]="productform" (ngSubmit)="onSubmit()">
     <p><mat-form-field>
         <input matInput placeholder="Product" formControlName="name">
@@ -27,20 +32,13 @@
           Description is required
         </mat-error>
       </mat-form-field></p>
-    <p><mat-form-field>
-        <textarea matInput placeholder="Image" formControlName="image"></textarea>
-        <mat-icon matSuffix>description</mat-icon>
-        <mat-error *ngIf="productform.get('image')?.hasError('required')">
-          Image is required
-        </mat-error>
-      </mat-form-field></p>
-    <p><mat-form-field>
-        <input matInput placeholder="Price" formControlName="price">
+      <p><mat-form-field>
+        <input matInput placeholder="Price" formControlName="preis">
         <mat-icon matSuffix>payments</mat-icon>
-        <mat-error *ngIf="productform.get('price')?.hasError('required')">
+        <mat-error *ngIf="productform.get('preis')?.hasError('required')">
           Price is required
         </mat-error>
-        <mat-error *ngIf="productform.get('price')?.hasError('pattern')">
+        <mat-error *ngIf="productform.get('preis')?.hasError('pattern')">
           Price is invalid
         </mat-error>
       </mat-form-field></p>

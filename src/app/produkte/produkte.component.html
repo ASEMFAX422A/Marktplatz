@@ -1,14 +1,17 @@
 <div class="product-container">
   <mat-card class="productcard">
-    <mat-card-header>
+    <mat-card-header class="header">
       <div mat-card-avatar class="profilimage"></div>
       <mat-card-title>{{ user }}</mat-card-title>
       <mat-card-subtitle>{{ product }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="assets/img/products/1.jpg" alt="Photo of a Shiba Inu">
+    <img mat-card-image src="{{ 'data:image/jpg;base64,'+image }}" alt="Photo of a Shiba Inu">
     <mat-card-content>
-      <p>
-        {{ price }}
+      <p class="desciption">
+        {{ description }}
+      </p>
+      <p class="preis">
+        {{ price+ " €"}}
       </p>
     </mat-card-content>
     <mat-card-actions>
