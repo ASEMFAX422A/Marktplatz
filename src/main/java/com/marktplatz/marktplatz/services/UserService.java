@@ -35,11 +35,11 @@ public class UserService implements UserDetailsService {
     public ResponseEntity<UserDto> getUserById(Long id){
         return  ResponseEntity.ok(new UserDto().OpntionaluserDto(userReop.findById(id)));
     }
-    public ResponseEntity<UserDto> getByUsername(UserDto userDto){
-        if (userDto.getUsername().isEmpty()) {
+    public ResponseEntity<UserDto> getByUsername(String username){
+        if (username.isEmpty()) {
             return (ResponseEntity<UserDto>) ResponseEntity.badRequest();
         }
-        return ResponseEntity.ok(new UserDto().userDto(userReop.findeByUsername(userDto.getUsername())));
+        return ResponseEntity.ok(new UserDto().userDto(userReop.findeByUsername(username)));
     }
 
     //TODO: muss Noch angepasst werden. soll geprüft werden ob der User bzw. Username schon existiert.✅
@@ -48,6 +48,7 @@ public class UserService implements UserDetailsService {
         if (new UserDto().userDto(userReop.findeByUsername(user.getUsername()))!=null) { user.setUsername(user.getUsername()+""+ rand);}
         if (user.getRole()== null){user.setRole(Role.USER);}
         user.setPassword(passwordEncoder.bCryptPasswordEncoder().encode(user.getPassword()));
+
         return ResponseEntity.ok(new UserDto().userDto(userReop.save(new User().toUser(user))));
     }
 

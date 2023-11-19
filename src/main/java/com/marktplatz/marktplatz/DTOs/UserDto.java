@@ -4,6 +4,7 @@ import com.marktplatz.marktplatz.Roles.Role;
 import com.marktplatz.marktplatz.entity.User;
 import com.marktplatz.marktplatz.entity.UserAnzeige;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +23,7 @@ public class UserDto  {
     private String email;
     private String username;
     private String password;
-    private String profilePic;
+    private byte[] profilePic;
     private List<UserAnzeige> anzeigen;
 
     public UserDto userDto( User user){
