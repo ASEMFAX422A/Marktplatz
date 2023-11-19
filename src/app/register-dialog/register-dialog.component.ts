@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { UserapiService } from '../userapi.service';
 import { UserDto } from 'src/models/login.modules';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class RegisterDialogComponent {
   isAllrequired: boolean = false;
   registerForm: FormGroup;
 
-  constructor(private matDialog:MatDialog, private formBuilder: FormBuilder, private prodser: UserapiService) {
+  constructor(private matDialog:MatDialog, private formBuilder: FormBuilder, private prodser: UserapiService, private toastr: ToastrService) {
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       profilePic: ['assets/img/profilepic/default.png', Validators.required],
@@ -53,10 +54,13 @@ export class RegisterDialogComponent {
       const offerData: UserDto = this.registerForm.value;
       this.prodser.addUser(offerData).subscribe(
         (response) => {
+          this.toastr.success("Register was successful","", {positionClass: 'toast-top-center',})
           console.log('Anzeige erfolgreich hinzugefügt:', response);
           this.registerForm.reset();
+          this.closeDialog();
         },
         (error) => {
+          this.toastr.error("Login failed","", {positionClass: 'toast-top-center',})
           console.error('Fehler beim Hinzufügen der Anzeige:', error);
         }
       );

@@ -55,10 +55,12 @@ export class LoginDialogComponent{
         (response: boolean) => {
           this.userObserv.updateLoginRequest(response);
           console.log('Anzeige erfolgreich hinzugefügt:', response);
-          this.toastr.success("Login Success");
+          this.toastr.success("Login was successful","", {positionClass: 'toast-top-center',});
           this.closeDialog();
         },
         (error) => {
+          this.toastr.error("Login failed" ,"", {positionClass: 'toast-top-center',});
+          this.closeDialog();
           console.error('Fehler beim Hinzufügen der Anzeige:', error);
         }
       );
