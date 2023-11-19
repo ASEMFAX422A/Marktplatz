@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserapiService } from '../userapi.service';
 import { UserDto } from 'src/models/login.modules';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-accountsettings',
@@ -18,7 +19,7 @@ export class AccountsettingsComponent {
   role: string = '';
   id: number = 0;
 
-  constructor(private userObserver: UserapiService) {}
+  constructor(private userObserver: UserapiService, private router:Router) {}
 
   ngOnInit() {
     this.userObserver.loginRequest$.subscribe((status) => {
@@ -46,6 +47,11 @@ export class AccountsettingsComponent {
     this.userObserver.profilePic$.subscribe((value) => {
       this.profilePic = value;
     });
+  }
+  logout(): void {
+    this.userObserver.updateLoginRequest(false);
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('currentUser');
   }
 
   togglePasswordVisibilityPassword(): void {

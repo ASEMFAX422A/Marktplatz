@@ -4,7 +4,14 @@
   background-color: white;
   border-radius: 18px;
   border: 1px solid blue;
-
+  .logoutbutton  {
+    display: flex;
+    justify-content: center;
+    button {
+      width: 300px;
+      margin-bottom: 10px;
+    }
+  }
   .headeraccount {
     padding-top: 10px;
     display: flex;

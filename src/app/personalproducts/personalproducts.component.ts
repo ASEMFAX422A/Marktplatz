@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AnzeigeDto } from 'src/models/anzeige.models';
+import { ProductapiService } from '../productapi.service';
 
 @Component({
   selector: 'app-personalproducts',
@@ -6,8 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./personalproducts.component.scss']
 })
 export class PersonalproductsComponent {
-  username = ['Oliver','Zaid','Besmir ', 'Oliver','Zaid','Besmir ']
-  postProduct = ['Fernseher', 'Fernseher', 'Fernseher', 'Fernseher', 'Fernseher', 'Fernseher']
-  postPrice = ['300€', '290€', '320€', '300€', '290€', '320€']
-  postImage = []
+  anzeigen: AnzeigeDto[] = []
+
+  constructor (private productService:ProductapiService){}
+
+  ngOnInit(): void {
+    this.productService.getAllAnzeigen().subscribe(data => {
+      this.anzeigen = data;
+    })}
 }

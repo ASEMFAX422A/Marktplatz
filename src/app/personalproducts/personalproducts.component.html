@@ -7,8 +7,8 @@
           Created Products
         </ng-template>
         <div class="personalproduct-container">
-          <app-produkte *ngFor="let i of [0, 1, 2, 3, 4, 5]" [user]="username[i]" [product]="postProduct[i]"
-            [price]="postPrice[i]" [image]="postImage[i]"></app-produkte>
+          <app-produkte *ngFor="let anzeige of anzeigen" [user]="anzeige.name" [product]="anzeige.name"
+          [price]="anzeige.preis" [image]="anzeige.image"></app-produkte>
         </div>
       </mat-tab>
       <mat-tab>
@@ -17,8 +17,8 @@
           Favorite Products
         </ng-template>
         <div class="personalproduct-container">
-          <app-produkte *ngFor="let i of [0, 1, 2, 3, 4, 5]" [user]="username[i]" [product]="postProduct[i]"
-            [price]="postPrice[i]" [image]="postImage[i]"></app-produkte>
+          <app-produkte *ngFor="let anzeige of anzeigen" [user]="anzeige.name" [product]="anzeige.name"
+          [price]="anzeige.preis" [image]="anzeige.image"></app-produkte>
         </div>
       </mat-tab>
     </mat-tab-group>

@@ -14,4 +14,12 @@ export class ProductapiService {
   addAnzeige(anzeige: AnzeigeDto): Observable<AnzeigeDto> {
     return this.http.post<AnzeigeDto>(`${this.baseUrl}/addAnzeige`, anzeige);
   }
+
+  getAllAnzeigen(): Observable<AnzeigeDto[]> {
+    return this.http.get<AnzeigeDto[]>(`${this.baseUrl}/getAll`);
+  }
+
+  updateAnzeige(anzeige: AnzeigeDto): Observable<AnzeigeDto> {
+    return this.http.put<AnzeigeDto>(`${this.baseUrl}/updateAnzeige/${anzeige.id}`, anzeige);
+  }
 }
