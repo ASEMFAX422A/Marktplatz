@@ -19,7 +19,7 @@ public class AnzeigeDto {
     private Long id;
     private String name;
     private String description;
-    private String image;
+    private byte[] image;
     private double preis;
     private UserAnzeige userAnzeige;
 

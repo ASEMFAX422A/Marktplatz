@@ -20,8 +20,9 @@ public class Anzeige {
     private String name;
     @Column
     private String description;
+    @Lob
     @Column
-    private String image;
+    private byte[] image;
     @Column
     private double preis;
 

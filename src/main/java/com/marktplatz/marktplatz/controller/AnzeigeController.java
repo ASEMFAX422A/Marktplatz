@@ -2,13 +2,17 @@ package com.marktplatz.marktplatz.controller;
 
 import com.marktplatz.marktplatz.DTOs.AnzeigeDto;
 import com.marktplatz.marktplatz.entity.Anzeige;
+import com.marktplatz.marktplatz.entity.User;
 import com.marktplatz.marktplatz.services.AnzeigeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
+
 
 @RestController
 @Controller
@@ -32,7 +36,8 @@ public class AnzeigeController {
     public ResponseEntity<AnzeigeDto> getAnzeigeByName(@PathVariable String name){return ResponseEntity.ok(anzeigeService.getAnzeigeByName(name).getBody());}
 
     @PostMapping("/addAnzeige")
-    public ResponseEntity<AnzeigeDto> addAnzeige(@RequestBody Anzeige anzeige){return ResponseEntity.ok(anzeigeService.addAnzeige(anzeige).getBody());}
+    public ResponseEntity<AnzeigeDto> addAnzeige(@RequestBody Anzeige anzeige) {
+        return ResponseEntity.ok(anzeigeService.addAnzeige(anzeige).getBody());}
 
     @PutMapping("/updateAnzeige")
     public void updateAnzeige(@RequestBody AnzeigeDto anzeige){

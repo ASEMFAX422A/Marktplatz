@@ -6,9 +6,15 @@ import com.marktplatz.marktplatz.repository.AnzeigeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class AnzeigeService {
@@ -37,8 +43,13 @@ public class AnzeigeService {
     }
     public ResponseEntity<AnzeigeDto> addAnzeige(Anzeige anzeige){
 
-        return ResponseEntity.ok(new AnzeigeDto().anzeigeDto((Anzeige) anzeigeRepo.save(anzeige)));
+            return ResponseEntity.ok(new AnzeigeDto().anzeigeDto((Anzeige) anzeigeRepo.save(anzeige)));
+
     }
+
+
+
+
     public void updateAnzeigeById(AnzeigeDto anzeige){
         anzeigeRepo.updateAnzeigeById(
                 anzeige.getId(),
