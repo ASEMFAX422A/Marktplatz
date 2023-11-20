@@ -129,7 +129,7 @@ export class CreateproductComponent {
             this.toastr.error("Create Product failed","", {positionClass: 'toast-top-center',})
           }
         );
-        await this.sleep(2000);
+        await this.sleep(10000);
         this.prodser.getAnzeigeByName(offerData.name).subscribe(
           (response) => {
             console.log('Anzeige nach Namen abgerufen:', response);

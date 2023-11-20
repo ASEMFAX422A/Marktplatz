@@ -22,6 +22,7 @@ export class LoginDialogComponent{
   isPasswordVisiblePassword: boolean = false;
   registerForm: FormGroup;
 
+
   constructor(private matDialog:MatDialog, private formBuilder: FormBuilder, private userObserv: UserapiService, private dialogref: MatDialogRef<CreateproductComponent>, private toastr: ToastrService) {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -57,7 +58,6 @@ export class LoginDialogComponent{
               (response: UserDto) => {
                 localStorage.setItem('currentUser', JSON.stringify(response));
                 localStorage.setItem('user_id',JSON.stringify(response.id));
-                console.log("Die ID:"+localStorage.getItem('user_id'))
                 this.userObserv.updateSharedData(
                   response.username,
                   response.name,
