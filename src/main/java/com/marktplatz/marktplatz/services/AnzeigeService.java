@@ -55,16 +55,16 @@ public class AnzeigeService {
         return ResponseEntity.ok(new AnzeigeDto().anzeigeDto(anzeigeRepo.findeByName(username)));
     }
     public ResponseEntity<AnzeigeDto> addAnzeige(Anzeige anzeige,Long userId){
-            addUserAnzeige(anzeige,userId);
-         return ResponseEntity.ok(new AnzeigeDto().anzeigeDto((Anzeige) anzeigeRepo.save(anzeige)));
+        AnzeigeDto anzeigeDto = new AnzeigeDto().anzeigeDto((Anzeige) anzeigeRepo.save(anzeige));
+        addUserAnzeige(anzeige,userId);
+         return ResponseEntity.ok(anzeigeDto);
     }
 
     public void addUserAnzeige(Anzeige anzeige,Long userId){
         User user= new User().toUser(new UserDto().OpntionaluserDto(userReop.findById(userId)));
         UserAnzeige userAnzeige=new UserAnzeige(user,anzeige);
         user.getAnzeigen().add(userAnzeige);
-        Anzeige savedAnzeige= userAnzeigeRepository.save(userAnzeige).getAnzeige();
-        savedAnzeige.getUserAnzeige().add(userAnzeige);
+        userAnzeigeRepository.save(userAnzeige);
     }
 
     public void updateAnzeigeById(AnzeigeDto anzeige){
