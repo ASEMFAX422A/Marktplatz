@@ -56,7 +56,8 @@ export class LoginDialogComponent{
             this.userObserv.getUserByUsername(offerData).subscribe(
               (response: UserDto) => {
                 localStorage.setItem('currentUser', JSON.stringify(response));
-
+                localStorage.setItem('user_id',JSON.stringify(response.id));
+                console.log("Die ID:"+localStorage.getItem('user_id'))
                 this.userObserv.updateSharedData(
                   response.username,
                   response.name,

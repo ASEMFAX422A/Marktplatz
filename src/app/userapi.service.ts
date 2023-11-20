@@ -10,6 +10,7 @@ import { NumberSymbol } from '@angular/common';
   providedIn: 'root'
 })
 export class UserapiService {
+  user_id : any = localStorage.getItem('user_id');
   private loginRequestSubject = new BehaviorSubject<boolean>(false);
   loginRequest$ = this.loginRequestSubject.asObservable();
   private usernameSubject = new BehaviorSubject<string>('');
