@@ -21,7 +21,7 @@ public class AnzeigeDto {
     private String description;
     private byte[] image;
     private double preis;
-    private UserAnzeige userAnzeige;
+    private List<UserAnzeige> userAnzeige;
 
     public AnzeigeDto anzeigeDto (Anzeige anzeige){
         return AnzeigeDto.builder()
@@ -45,7 +45,7 @@ public class AnzeigeDto {
                         .description(anzeige.getDescription())
                         .image(anzeige.getImage())
                         .preis(anzeige.getPreis())
-                        .userAnzeige(anzeige.getUserAnzeige())
+                        .userAnzeige( anzeige.getUserAnzeige())
                         .build())
                 .collect(Collectors.toList());
     }

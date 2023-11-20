@@ -24,4 +24,5 @@ public interface UserReop extends JpaRepository<User,Long> {
     @Query("SELECT u FROM User u where u.username = :username")
     User findeByUsername(@Param("username") String username);
 
+
 }

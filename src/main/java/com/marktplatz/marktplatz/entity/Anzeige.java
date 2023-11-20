@@ -4,6 +4,9 @@ import com.marktplatz.marktplatz.DTOs.AnzeigeDto;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+import java.util.Set;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,8 +29,8 @@ public class Anzeige {
     @Column
     private double preis;
 
-    @OneToOne(mappedBy = "anzeige")
-    private UserAnzeige userAnzeige;
+    @OneToMany(mappedBy = "anzeige")
+    private List<UserAnzeige> userAnzeige;
 
     public Anzeige toAnzeige(AnzeigeDto anzeigeDto){
         return Anzeige.builder()
@@ -36,7 +39,7 @@ public class Anzeige {
                 .description(anzeigeDto.getDescription())
                 .image(anzeigeDto.getImage())
                 .preis(anzeigeDto.getPreis())
-                .userAnzeige(anzeigeDto.getUserAnzeige())
+                .userAnzeige((List<UserAnzeige>) anzeigeDto.getUserAnzeige())
                 .build();
     }
 
