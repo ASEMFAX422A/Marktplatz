@@ -58,6 +58,7 @@ export class RegisterDialogComponent {
           console.log('Anzeige erfolgreich hinzugefügt:', response);
           this.registerForm.reset();
           this.closeDialog();
+          this.openDialogLogin();
         },
         (error) => {
           this.toastr.error("Login failed","", {positionClass: 'toast-top-center',})
