@@ -14,6 +14,7 @@ export class ProductapiService {
   constructor(private http: HttpClient) { }
 
   addAnzeige(anzeige: AnzeigeDto): Observable<AnzeigeDto> {
+    console.log(this.userid);
     return this.http.post<AnzeigeDto>(`${this.baseUrl}/addAnzeige/${this.userid}`, anzeige);
   }
 

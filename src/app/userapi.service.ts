@@ -61,6 +61,6 @@ export class UserapiService {
   }
 
   getUserByUsername(user: UserDto):Observable<UserDto> {
-    return this.http.post<UserDto>(`${this.baseUrl}/getUserByUsername`, user);
+    return this.http.get<UserDto>(`${this.baseUrl}/getUserByUsername/${user.username}`);
   }
 }

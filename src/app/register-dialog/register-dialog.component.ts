@@ -22,7 +22,7 @@ export class RegisterDialogComponent {
   constructor(private matDialog:MatDialog, private formBuilder: FormBuilder, private prodser: UserapiService, private toastr: ToastrService) {
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
-      profilePic: ['assets/img/profilepic/default.png', Validators.required],
+      profilePic: [''],
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -61,7 +61,7 @@ export class RegisterDialogComponent {
           this.openDialogLogin();
         },
         (error) => {
-          this.toastr.error("Login failed","", {positionClass: 'toast-top-center',})
+          this.toastr.error("Register failed","", {positionClass: 'toast-top-center',})
           console.error('Fehler beim Hinzufügen der Anzeige:', error);
         }
       );
