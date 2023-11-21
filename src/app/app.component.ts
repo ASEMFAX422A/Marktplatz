@@ -35,22 +35,11 @@ export class AppComponent {
     if (isLoggedInString) {
       const isLoggedIn = JSON.parse(isLoggedInString);
       this.userObserv.updateLoginRequest(isLoggedIn);
-
       if (isLoggedIn) {
         const currentUserString = localStorage.getItem('currentUser');
         if (currentUserString) {
           const currentUser: UserDto = JSON.parse(currentUserString);
           this.userObserv.updateSharedData(
-            currentUser.username,
-            currentUser.name,
-            currentUser.email,
-            currentUser.password,
-            currentUser.profilePic,
-            currentUser.id,
-            currentUser.role
-          );
-
-          console.log(
             currentUser.username,
             currentUser.name,
             currentUser.email,

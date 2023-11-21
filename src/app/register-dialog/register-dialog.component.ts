@@ -18,6 +18,7 @@ export class RegisterDialogComponent {
   isSubmitCheckTrue: boolean = false;
   isAllrequired: boolean = false;
   registerForm: FormGroup;
+  confirmPassword: any = 1;
 
   constructor(private matDialog:MatDialog, private formBuilder: FormBuilder, private prodser: UserapiService, private toastr: ToastrService) {
     this.registerForm = this.formBuilder.group({
@@ -27,8 +28,22 @@ export class RegisterDialogComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
-    });
+    }, {
+      validators: this.passwordsMatchValidator
+   });
   }
+  passwordsMatchValidator(group: FormGroup) {
+  const password = group.get('password')!.value;
+  const confirmPassword = group.get('confirmPassword')!.value;
+  if (password === confirmPassword) {
+    group.get('confirmPassword')?.setErrors(null);
+  } else {
+    group.get('confirmPassword')?.setErrors({ notMatching: true });
+  }
+  return null;
+}
+
+
   closeDialog(){
     this.matDialog.closeAll()
   }

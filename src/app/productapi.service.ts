@@ -14,12 +14,16 @@ export class ProductapiService {
   constructor(private http: HttpClient) { }
 
   addAnzeige(anzeige: AnzeigeDto): Observable<AnzeigeDto> {
-    console.log(this.userid);
-    return this.http.post<AnzeigeDto>(`${this.baseUrl}/addAnzeige/${this.userid}`, anzeige);
+    return this.http.post<AnzeigeDto>(`${this.baseUrl}/addAnzeige/${localStorage.getItem('user_id')}`, anzeige);
   }
 
   getAllAnzeigen(): Observable<AnzeigeDto[]> {
     return this.http.get<AnzeigeDto[]>(`${this.baseUrl}/getAll`);
+  }
+
+  getAllAnzeigeByUser(): Observable<AnzeigeDto[]> {
+    console.log(localStorage.getItem('user_id'));
+    return this.http.get<AnzeigeDto[]>(`${this.baseUrl}/getAllByUser/${localStorage.getItem('user_id')}`);
   }
 
   updateAnzeige(anzeige: AnzeigeDto): Observable<AnzeigeDto> {
@@ -32,7 +36,7 @@ export class ProductapiService {
     return this.http.get<AnzeigeDto>(url,{headers});
   }
 
-  getAnzeigeByID(user: AnzeigeDto): Observable<AnzeigeDto> {
-    return this.http.get<AnzeigeDto>(`${this.baseUrl}/getAnzeige/{id}`);
+  getAnzeigeByID(anzeige: AnzeigeDto): Observable<AnzeigeDto> {
+    return this.http.get<AnzeigeDto>(`${this.baseUrl}/getAnzeige/${localStorage.getItem('user_id')}`);
   }
 }

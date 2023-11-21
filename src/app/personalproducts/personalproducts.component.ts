@@ -10,10 +10,13 @@ import { ProductapiService } from '../productapi.service';
 export class PersonalproductsComponent {
   anzeigen: AnzeigeDto[] = []
 
+
   constructor (private productService:ProductapiService){}
 
   ngOnInit(): void {
-    this.productService.getAllAnzeigen().subscribe(data => {
+    this.productService.getAllAnzeigeByUser().subscribe(data => {
       this.anzeigen = data;
+      console.log(this.anzeigen);
+      console.log(localStorage.getItem('user_id'));
     })}
 }
