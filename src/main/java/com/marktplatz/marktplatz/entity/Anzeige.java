@@ -39,7 +39,7 @@ public class Anzeige {
                 .description(anzeigeDto.getDescription())
                 .image(anzeigeDto.getImage())
                 .preis(anzeigeDto.getPreis())
-                .userAnzeige((List<UserAnzeige>) anzeigeDto.getUserAnzeige())
+                .userAnzeige( anzeigeDto.getUserAnzeige())
                 .build();
     }
 

@@ -23,8 +23,7 @@ public interface AnzeigeRepo<T> extends JpaRepository<Anzeige,Long> {
 
 
 
-    @Query("SELECT a FROM Anzeige a, User u, UserAnzeige ua WHERE u.id = ua.user.id AND a.id = ua.anzeige.id AND u.id = :uId AND a.id = :aId")
-    List<Anzeige> findAllUserAnzeigen(@Param("uId") Long uId, @Param("aId") Long aId);
+
 
 
 
