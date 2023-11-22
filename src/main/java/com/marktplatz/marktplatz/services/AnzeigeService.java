@@ -54,6 +54,7 @@ public class AnzeigeService {
         if (username.isEmpty()) {return null;}
         return ResponseEntity.ok(new AnzeigeDto().anzeigeDto(anzeigeRepo.findeByName(username)));
     }
+
     public ResponseEntity<AnzeigeDto> addAnzeige(Anzeige anzeige,Long userId){
         AnzeigeDto anzeigeDto = new AnzeigeDto().anzeigeDto((Anzeige) anzeigeRepo.save(anzeige));
         addUserAnzeige(anzeige,userId);

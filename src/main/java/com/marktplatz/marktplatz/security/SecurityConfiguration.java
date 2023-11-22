@@ -18,6 +18,7 @@ public class SecurityConfiguration  {
                         .requestMatchers(HttpMethod.GET,"api/v1/anzeige/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/auth/user/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/auth/user/**").permitAll()
+
                         .anyRequest().authenticated())
                 .sessionManagement(ses -> ses.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 

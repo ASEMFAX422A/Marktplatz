@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
+
 @RestController
 @Controller
 @RequestMapping(value = "/api/v1/anzeige", method = RequestMethod.POST)
@@ -19,7 +20,6 @@ import java.util.List;
 public class AnzeigeController {
     @Autowired
     AnzeigeService anzeigeService;
-
 
     @GetMapping("/getAll")
     public ResponseEntity<List<AnzeigeDto>> getAnzeigen(){return  ResponseEntity.ok(anzeigeService.getAnzeigen().getBody());}
