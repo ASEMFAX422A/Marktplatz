@@ -1,0 +1,12 @@
+.felxrow {
+  .account-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .produkte-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+}
