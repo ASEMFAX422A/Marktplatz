@@ -14,14 +14,18 @@ public interface AnzeigeRepo<T> extends JpaRepository<Anzeige,Long> {
 
     @Modifying
     @Query("UPDATE Anzeige a SET a.name = :name, a.image = :image, a.description = :description, a.preis = :preis WHERE a.id = :id")
-    void updateAnzeigeById(@Param("id") Long id, @Param("description") String description, @Param("name") String name, @Param("image") String image, @Param("preis") double preis);
+    void updateAnzeigeById(@Param("id") Long id, @Param("description") String description, @Param("name") String name, @Param("image") byte[] image, @Param("preis") double preis);
 
 
 
     @Query("SELECT a FROM Anzeige a where a.name = :name")
     Anzeige findeByName(@Param("name") String name);
 
-    @Modifying//noch nicht fertig
-    @Query("SELECT a.name,a.description,a.image,a.preis FROM Anzeige a,User u,UserAnzeige ua where u.id = ua.user.id and a.id= ua.anzeige.id and u.id= : uId")
-    List<Anzeige> findAllAnzeigen(@Param("uId") Long uId);
+
+
+
+
+
+
+
 }
