@@ -1,0 +1,54 @@
+<div class="header">
+  <h1 class="top">Create an offer:</h1>
+  <div class="account">
+    <div class="anmeldung">
+      <h1 *ngIf="anmeldungboolean">{{ username }}</h1>
+    </div>
+    <div *ngIf="!anmeldungboolean" class="anmeldung">
+      <h1 (click)="openDialogLogin()" class="login">Login</h1>
+      <h1> / </h1>
+      <h1 (click)="openDialogRegister()" class="login">Register</h1>
+    </div>
+  </div>
+</div>
+<div class="createproduct">
+  <div class="showproductpic">
+    <img [src]="url">
+    <input type="file" (change)="onFileChange($event)" style="display: none;" #fileInput>
+    <button (click)="fileInput.click()" mat-raised-button color="primary">Choose File</button>
+  </div>
+  <form [formGroup]="productform" (ngSubmit)="onSubmit()">
+    <p><mat-form-field>
+        <input matInput placeholder="Product" formControlName="name">
+        <mat-icon matSuffix>shopping_cart</mat-icon>
+        <mat-error *ngIf="productform.get('name')?.hasError('required')">
+          Product is required
+        </mat-error>
+      </mat-form-field></p>
+    <p><mat-form-field>
+        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+        <mat-icon matSuffix>description</mat-icon>
+        <mat-error *ngIf="productform.get('description')?.hasError('required')">
+          Description is required
+        </mat-error>
+      </mat-form-field></p>
+      <p><mat-form-field>
+        <input matInput placeholder="Price" formControlName="preis">
+        <mat-icon matSuffix>payments</mat-icon>
+        <mat-error *ngIf="productform.get('preis')?.hasError('required')">
+          Price is required
+        </mat-error>
+        <mat-error *ngIf="productform.get('preis')?.hasError('pattern')">
+          Price is invalid
+        </mat-error>
+      </mat-form-field></p>
+    <div class="buttons">
+      <button (click)="closeDialog()" class="cancel" mat-raised-button color="warn">Cancel</button>
+      <button type="submit" class="submit" mat-raised-button color="warn">Create</button>
+    <!--  <input type="file" (change)="onFileChange($event)" /> -->
+    </div>
+
+  </form>
+  <!-- Hier wird das Bild nach dem Hinzufügen angezeigt -->
+<!--  <img  [src]="'data:image/jpg;base64,' +url" alt="Anzeige Image" /> -->
+</div>

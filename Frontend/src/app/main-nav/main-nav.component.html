@@ -1,0 +1,81 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <div class="left">
+        <div *ngIf="anmeldungboolean" class="accountbutton">
+          <button color="primary" class="account" (click)="setAccountTrue()" mat-raised-button>
+            <!-- *ngIF abfrage, geht aber auch nur mit Verbindung zur Datenbank-->
+            <div class="leftsidebar-container">
+              <div class="txtbuttons">
+                Account <!--* Accountname mit verbindung zur Datenbank *-->
+              </div>
+              <mat-icon>person</mat-icon>
+            </div>
+          </button>
+        </div>
+        <div class="hompagebutton">
+          <button color="primary" class="homepage" (click)="setHomepageTrue()" mat-raised-button>
+            <div class="leftsidebar-container">
+              <div class="txtbuttons">
+                Home
+              </div>
+              <mat-icon>home</mat-icon>
+            </div>
+          </button>
+        </div>
+        <div class="messages">
+          <button color="primary" class="message" (click)="setMessagesTrue()" mat-raised-button>
+            <div class="leftsidebar-container">
+              <div class="txtbuttons">
+                Messages
+              </div>
+              <mat-icon>chat</mat-icon>
+            </div>
+          </button>
+        </div>
+        <div class="showproducts">
+          <button color="primary" class="product" (click)="setProductsTrue()" mat-raised-button>
+            <div class="leftsidebar-container">
+              <div class="txtbuttons">
+                Products
+              </div>
+              <mat-icon>edit_note</mat-icon>
+            </div>
+          </button>
+        </div>
+        <div class="createbutton">
+          <button color="primary" class="create" (click)="openDialogcreateProduct()" mat-raised-button>
+            <div class="leftsidebar-container">
+              <div class="txtbuttons">
+                Create
+              </div>
+              <mat-icon matSuffix>add_circle</mat-icon>
+            </div>
+          </button>
+        </div>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span><a>EbayTest</a></span>
+      <div *ngIf="anmeldungboolean" class="anmeldung">
+        <a>Willkommen, {{ username }}</a>
+      </div>
+      <div *ngIf="!anmeldungboolean" class="anmeldung">
+        <span>
+          <a class="login" (click)="openDialogLogin()">Login</a>
+          <a>/</a>
+          <a class="register" (click)="openDialogRegister()">Register</a>
+        </span>
+      </div>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

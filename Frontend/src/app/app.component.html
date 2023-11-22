@@ -1,0 +1,27 @@
+<app-main-nav>
+  <div class="felxrow">
+    <div class="account-container">
+      <div *ngIf="accountObserver |async">
+        <app-accountsettings></app-accountsettings>
+      </div>
+    </div>
+    <div *ngIf="hompageObserver |async">
+      <div class="produkte-container">
+        <app-produkte *ngFor="let anzeige of anzeigen" [user]="anzeige.name" [product]="anzeige.name"
+          [price]="anzeige.preis" [image]="anzeige.image" [description]="anzeige.description"></app-produkte>
+      </div>
+    </div>
+
+    <div *ngIf="productObserver |async">
+      <app-personalproducts></app-personalproducts>
+    </div>
+
+    <div *ngIf="messagesObserver |async">
+      <div>
+        <div>
+          <app-messages></app-messages>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-main-nav>

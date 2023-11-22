@@ -1,0 +1,26 @@
+<div class="page-container">
+  <div class="products-container">
+    <mat-tab-group animationDuration="0ms">
+      <mat-tab class="userproducts">
+        <ng-template mat-tab-label>
+          <mat-icon>add_circle</mat-icon>
+          Created Products
+        </ng-template>
+        <div class="personalproduct-container">
+          <app-produkte *ngFor="let anzeige of anzeigen" [user]="anzeige.name" [product]="anzeige.name"
+          [price]="anzeige.preis" [image]="anzeige.image" [description]="anzeige.description"></app-produkte>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>favorite</mat-icon>
+          Favorite Products
+        </ng-template>
+        <div class="personalproduct-container">
+          <app-produkte *ngFor="let anzeige of anzeigen" [user]="anzeige.name" [product]="anzeige.name"
+          [price]="anzeige.preis" [image]="anzeige.image" [description]="anzeige.description"></app-produkte>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
